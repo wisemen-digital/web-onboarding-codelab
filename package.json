@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon --watch index.md --exec claat export -o temp/ android-test.md && ./node_modules/kill-port/cli.js --port 9090 && cd temp/android-test && claat serve",
-    "build": "./claat export -o dist index.md"
+    "build": "./claat-linux export -o dist index.md"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,6 @@
     "codelab"
   ],
   "dependencies": {
-    "@deepakvishwakarma/node-claat": "^0.2.0",
-    "go": "^3.0.1",
     "kill-port": "^1.6.1",
     "nodemon": "^2.0.3"
   }
