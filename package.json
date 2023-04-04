@@ -4,8 +4,8 @@
   "description": "use nodemon to watch changes on md file, rebuild codelab on saves",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon --watch docs/index.md --exec \\\\\\\"claat export -o temp/ android-test.md && ./node_modules/kill-port/cli.js --port 9090 && cd temp/android-test && claat serve\\\\\\\"",
-    "build": "node-claat export -o docs/index.md"
+    "watch": "nodemon --watch index.md --exec claat export -o temp/ android-test.md && ./node_modules/kill-port/cli.js --port 9090 && cd temp/android-test && claat serve",
+    "build": "./claat export -o dist index.md"
   },
   "repository": {
     "type": "git",
