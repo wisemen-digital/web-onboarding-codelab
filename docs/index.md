@@ -38,7 +38,7 @@ We have a specific folder structure that we use in all our projects. This is to 
 
 ### Let's get started!
 
-![Soly Image Caption](img/hello.gif)
+![Soly Image Caption](../img/hello.gif)
 
 ## What you need: Prerequisites
 
@@ -87,6 +87,6 @@ Duration: 0:07:00
 ✅ < Fill IN TAKEAWAY 2>   
 ✅ < Fill IN TAKEAWAY 3>   
 
-![Soly Image Caption](img/soly.gif)
+![Soly Image Caption](../img/soly.gif)
 
 Thanks for participating in this codelab! Let us know what you thought in the [Solace Community Forum](https://solace.community/)! If you found any issues along the way we'd appreciate it if you'd raise them by clicking the Report a mistake button at the bottom left of this codelab.
