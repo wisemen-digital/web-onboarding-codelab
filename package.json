@@ -1,0 +1,21 @@
+{
+  "name": "codelab-bootstrap",
+  "version": "1.0.0",
+  "description": "use nodemon to watch changes on md file, rebuild codelab on saves",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon --watch index.md --exec \\\"claat export -o temp/ android-test.md && ./node_modules/kill-port/cli.js --port 9090 && cd temp/android-test && claat serve\\\"",
+    "build": "claat export -o ./dist index.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SolaceDev/solace-dev-codelabs/tree/master/markdown/android-test"
+  },
+  "keywords": [
+    "codelab"
+  ],
+  "dependencies": {
+    "kill-port": "^1.6.1",
+    "nodemon": "^2.0.3"
+  }
+}
