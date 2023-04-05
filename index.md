@@ -9,11 +9,11 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 
 # Wiselab Onboarding 1
 
-## What you'll learn: Overview
+## What you'll learn: overview
 
 Duration: 1:00:00
 
-What is up bro?
+What is up bro? test werw er
 
 Hello fellow developer! Welcome to **Wisemen**! We want to make sure you are soon up to speed with the core of Android development and our way of working.
 Therefore we created this awesome series of **CodeLabs** for you. These are a constant work in progress, so please let us know if you have any feedback or suggestions!
