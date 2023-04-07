@@ -1,56 +1,21 @@
-author: Danne Dullers
-summary: Learn Android
+author: JJ & KK
+summary: Frontend onboarding
 id: index
-tags: Android, Kotlin
+tags: Frontend, Vue
 categories:
-environments: Android
+environments: Vue
 status: Draft
 feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/markdown/android-test
 
-# Wiselab Onboarding 1
+# Wiselab Onboarding Frontend
 
 ## What you'll learn: overview
 
-Duration: 1:00:00
-
-What is up bro? test werw er
-
-Hello fellow developer! Welcome to **Wisemen**! We want to make sure you are soon up to speed with the core of Android development and our way of working.
-Therefore we created this awesome series of **CodeLabs** for you. These are a constant work in progress, so please let us know if you have any feedback or suggestions!
-This is what you will learn in this CodeLab:
-
-### 1. Creating a new project with our Android Core Library
-We have our own Android Core Library that we use in all our projects. This library contains a lot of useful classes and functions that we use in all our projects.
-
-### 2. Folder structure
-We have a specific folder structure that we use in all our projects. This is to make sure that we can easily find all the files we need.
-
-### 3. AGILE
-1. Work with **Jira**
-2. Using **Bitbucket** for version control
-3. Branching strategy
-4. **Pull Requests**
-
-### 4. Creating a first screen
-* How to use **Figma**
-* Write some code!
-* Write some more code!
-* Create your first **PR** (pull request)
-
-
-### Let's get started!
-
-![Soly Image Caption](img/hello.gif)
+TODO
 
 ## What you need: Prerequisites
 
-Duration: 0:55:00
-
-Before we start, make sure you have everything you need to complete this **WiseLab**. You will need:
-
-### Android Studio
-Download the IDE here if you don't have it already!
-[Android Studio](https://developer.android.com/studio)
+### IDE
 
 ### Figma
 Our designers work with **Figma**. You can download it here:
@@ -65,30 +30,135 @@ To access the designs you need to log in with your Wisemen account:
 ### Jira access
 *ToDo: Add link to Jira*
 
-## Create the project
+## What you'll do
 
-### Add Android core dependencies
+### Project explanation
+Lorem impsum
 
-```gradle
-dependencies {
-    // Core
-    implementation "com.github.appwise-labs.AndroidCore:core:$android_core_version"
-    implementation "com.github.appwise-labs.AndroidCore:room:$android_core_version"
-    implementation "com.github.appwise-labs.AndroidCore:networking:$android_core_version"
-    ...
-}
+### Requirements
+Lorem impsum
+
+### Designs
+Insert designs here
+
+## Project setup
+
+### 1. Generate a new Vue3 project
+
+```typescript
+TODO
 ```
-## Custom Step 2
-## Custom Step 3
 
-## Takeaways
+### 2. Vite
 
-Duration: 0:07:00
+Vite is a new breed of frontend build tool that significantly improves the frontend development experience. It consists of two major parts:
 
-✅ < Fill IN TAKEAWAY 1>   
-✅ < Fill IN TAKEAWAY 2>   
-✅ < Fill IN TAKEAWAY 3>   
+- A dev server that provides rich feature enhancements over native ES modules, for example extremely fast Hot Module Replacement (HMR) that updates your changes in the browser in as little as 16 milliseconds.
+- A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.
 
-![Soly Image Caption](img/soly.gif)
+#### Config
 
-Thanks for participating in this codelab! Let us know what you thought in the [Solace Community Forum](https://solace.community/)! If you found any issues along the way we'd appreciate it if you'd raise them by clicking the Report a mistake button at the bottom left of this codelab.
+> Vite is configured using a `vite.config.js` file in the root of your project. This file is written in CommonJS format and should export a plain JavaScript object.
+
+```typescript
+TODO
+```
+
+#### Plugins
+
+> Vite supports a plugin system that allows you to customize the behavior of Vite itself and integrate with other tools. Plugins can be configured in the `vite.config.js` file.
+
+```typescript
+TODO
+```
+
+### 2. Package.json
+
+> The package.json file is used to give information to npm that allows it to identify the project as well as handle the project's dependencies. npm can install the packages you specify in your package.json file.
+
+#### Scripts
+
+#### Dependencies vs Dev Dependencies
+
+### 3. Tailwind CSS
+
+> Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It's completely customizable, completely extensible, and amazingly feature-rich.
+
+```typescript
+TODO
+```
+
+### 4. ESLint config
+
+> ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs. In many ways, it is similar to JSLint and JSHint with a few exceptions:
+    
+```typescript
+TODO
+```
+
+### 5. i18n
+
+> i18n is a short name for internationalization. It is a process of designing and developing a software application so that it can be adapted to various languages and regions without engineering changes.
+
+```typescript
+TODO
+```
+
+### 6. What the Typescript
+
+> TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. Open source.
+
+```typescript
+TODO
+```
+
+## Structure
+
+### Folder
+
+### Components
+
+### Views
+
+### Router
+
+### Stores
+
+### Services & Http
+
+### Composables & Utils
+
+### Assets
+
+### Locales
+
+### Models, Types & Interfaces
+
+## Building your first view
+- start with the main todo-app view
+- build your first components
+- add axios to fetch data from the backend
+- add your components to a v-for loop
+- when main view is finished, add it to the router
+- start with login view
+- build your first form
+- add validation
+- add axios to fetch data from the backend
+- when login view is finished, add it to the router
+
+- start with the modal in the main view
+- create your first modal/pop-up
+- use axios to update the to-do's
+
+
+### 1. Create a new router
+
+
+### 2. Create a new view
+
+
+### 3. Create a new component
+
+### 4. Create a new store
+
+### 5. Create a new service

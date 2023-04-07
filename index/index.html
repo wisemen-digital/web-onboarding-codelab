@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Wiselab Onboarding 1</title>
+  <title>Wiselab Onboarding Frontend</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -23,41 +23,18 @@
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
                   id="index"
-                  title="Wiselab Onboarding 1"
+                  title="Wiselab Onboarding Frontend"
                   environment="web"
                   feedback-link="https://github.com/SolaceDev/solace-dev-codelabs/blob/master/markdown/android-test">
     
-      <google-codelab-step label="What you&#39;ll learn: overview" duration="60">
-        <p>What is up bro? test werw er</p>
-<p>Hello fellow developer! Welcome to <strong>Wisemen</strong>! We want to make sure you are soon up to speed with the core of Android development and our way of working. Therefore we created this awesome series of <strong>CodeLabs</strong> for you. These are a constant work in progress, so please let us know if you have any feedback or suggestions! This is what you will learn in this CodeLab:</p>
-<h2 is-upgraded>1. Creating a new project with our Android Core Library</h2>
-<p>We have our own Android Core Library that we use in all our projects. This library contains a lot of useful classes and functions that we use in all our projects.</p>
-<h2 is-upgraded>2. Folder structure</h2>
-<p>We have a specific folder structure that we use in all our projects. This is to make sure that we can easily find all the files we need.</p>
-<h2 is-upgraded>3. AGILE</h2>
-<ol type="1">
-<li>Work with <strong>Jira</strong></li>
-<li>Using <strong>Bitbucket</strong> for version control</li>
-<li>Branching strategy</li>
-<li><strong>Pull Requests</strong></li>
-</ol>
-<h2 is-upgraded>4. Creating a first screen</h2>
-<ul>
-<li>How to use <strong>Figma</strong></li>
-<li>Write some code!</li>
-<li>Write some more code!</li>
-<li>Create your first <strong>PR</strong> (pull request)</li>
-</ul>
-<h2 is-upgraded>Let&#39;s get started!</h2>
-<p class="image-container"><img alt="Soly Image Caption" src="img/9d981e73ce0028af.gif"></p>
+      <google-codelab-step label="What you&#39;ll learn: overview" duration="0">
+        <p>TODO</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="What you need: Prerequisites" duration="55">
-        <p>Before we start, make sure you have everything you need to complete this <strong>WiseLab</strong>. You will need:</p>
-<h2 is-upgraded>Android Studio</h2>
-<p>Download the IDE here if you don&#39;t have it already! <a href="https://developer.android.com/studio" target="_blank">Android Studio</a></p>
+      <google-codelab-step label="What you need: Prerequisites" duration="0">
+        <h2 is-upgraded>IDE</h2>
 <h2 is-upgraded>Figma</h2>
 <p>Our designers work with <strong>Figma</strong>. You can download it here:</p>
 <ul>
@@ -75,34 +52,95 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Create the project" duration="0">
-        <h2 is-upgraded>Add Android core dependencies</h2>
-<pre><code language="language-gradle" class="language-gradle">dependencies {
-    // Core
-    implementation &#34;com.github.appwise-labs.AndroidCore:core:$android_core_version&#34;
-    implementation &#34;com.github.appwise-labs.AndroidCore:room:$android_core_version&#34;
-    implementation &#34;com.github.appwise-labs.AndroidCore:networking:$android_core_version&#34;
-    ...
-}
+      <google-codelab-step label="What you&#39;ll do" duration="0">
+        <h2 is-upgraded>Project explanation</h2>
+<p>Lorem impsum</p>
+<h2 is-upgraded>Requirements</h2>
+<p>Lorem impsum</p>
+<h2 is-upgraded>Designs</h2>
+<p>Insert designs here</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Project setup" duration="0">
+        <h2 is-upgraded>1. Generate a new Vue3 project</h2>
+<pre><code language="language-typescript" class="language-typescript">TODO
+</code></pre>
+<h2 is-upgraded>2. Vite</h2>
+<p>Vite is a new breed of frontend build tool that significantly improves the frontend development experience. It consists of two major parts:</p>
+<ul>
+<li>A dev server that provides rich feature enhancements over native ES modules, for example extremely fast Hot Module Replacement (HMR) that updates your changes in the browser in as little as 16 milliseconds.</li>
+<li>A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.</li>
+</ul>
+<h3 is-upgraded>Config</h3>
+<p>Vite is configured using a <code>vite.config.js</code> file in the root of your project. This file is written in CommonJS format and should export a plain JavaScript object.</p>
+<pre><code language="language-typescript" class="language-typescript">TODO
+</code></pre>
+<h3 is-upgraded>Plugins</h3>
+<p>Vite supports a plugin system that allows you to customize the behavior of Vite itself and integrate with other tools. Plugins can be configured in the <code>vite.config.js</code> file.</p>
+<pre><code language="language-typescript" class="language-typescript">TODO
+</code></pre>
+<h2 is-upgraded>2. Package.json</h2>
+<p>The package.json file is used to give information to npm that allows it to identify the project as well as handle the project&#39;s dependencies. npm can install the packages you specify in your package.json file.</p>
+<h3 is-upgraded>Scripts</h3>
+<h3 is-upgraded>Dependencies vs Dev Dependencies</h3>
+<h2 is-upgraded>3. Tailwind CSS</h2>
+<p>Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It&#39;s completely customizable, completely extensible, and amazingly feature-rich.</p>
+<pre><code language="language-typescript" class="language-typescript">TODO
+</code></pre>
+<h2 is-upgraded>4. ESLint config</h2>
+<p>ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs. In many ways, it is similar to JSLint and JSHint with a few exceptions:</p>
+<pre><code language="language-typescript" class="language-typescript">TODO
+</code></pre>
+<h2 is-upgraded>5. i18n</h2>
+<p>i18n is a short name for internationalization. It is a process of designing and developing a software application so that it can be adapted to various languages and regions without engineering changes.</p>
+<pre><code language="language-typescript" class="language-typescript">TODO
+</code></pre>
+<h2 is-upgraded>6. What the Typescript</h2>
+<p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. Open source.</p>
+<pre><code language="language-typescript" class="language-typescript">TODO
 </code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Custom Step 2" duration="0">
-        
+      <google-codelab-step label="Structure" duration="0">
+        <h2 is-upgraded>Folder</h2>
+<h2 is-upgraded>Components</h2>
+<h2 is-upgraded>Views</h2>
+<h2 is-upgraded>Router</h2>
+<h2 is-upgraded>Stores</h2>
+<h2 is-upgraded>Services &amp; Http</h2>
+<h2 is-upgraded>Composables &amp; Utils</h2>
+<h2 is-upgraded>Assets</h2>
+<h2 is-upgraded>Locales</h2>
+<h2 is-upgraded>Models, Types &amp; Interfaces</h2>
+
 
       </google-codelab-step>
     
-      <google-codelab-step label="Custom Step 3" duration="0">
-        
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Takeaways" duration="7">
-        <p>✅ &lt; Fill IN TAKEAWAY 1&gt;<br> ✅ &lt; Fill IN TAKEAWAY 2&gt;<br> ✅ &lt; Fill IN TAKEAWAY 3&gt;</p>
-<p class="image-container"><img alt="Soly Image Caption" src="img/44f356558033e250.gif"></p>
-<p>Thanks for participating in this codelab! Let us know what you thought in the <a href="https://solace.community/" target="_blank">Solace Community Forum</a>! If you found any issues along the way we&#39;d appreciate it if you&#39;d raise them by clicking the Report a mistake button at the bottom left of this codelab.</p>
+      <google-codelab-step label="Building your first view" duration="0">
+        <ul>
+<li>start with the main todo-app view</li>
+<li>build your first components</li>
+<li>add axios to fetch data from the backend</li>
+<li>add your components to a v-for loop</li>
+<li>when main view is finished, add it to the router</li>
+<li>start with login view</li>
+<li>build your first form</li>
+<li>add validation</li>
+<li>add axios to fetch data from the backend</li>
+<li>when login view is finished, add it to the router</li>
+<li>start with the modal in the main view</li>
+<li>create your first modal/pop-up</li>
+<li>use axios to update the to-do&#39;s</li>
+</ul>
+<h2 is-upgraded>1. Create a new router</h2>
+<h2 is-upgraded>2. Create a new view</h2>
+<h2 is-upgraded>3. Create a new component</h2>
+<h2 is-upgraded>4. Create a new store</h2>
+<h2 is-upgraded>5. Create a new service</h2>
 
 
       </google-codelab-step>

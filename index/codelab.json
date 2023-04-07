@@ -3,11 +3,11 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-04-05T11:38:46+02:00",
+  "updated": "2023-04-07T16:21:14+02:00",
   "id": "index",
-  "duration": 122,
-  "title": "Wiselab Onboarding 1",
-  "summary": "Learn Android",
+  "duration": 0,
+  "title": "Wiselab Onboarding Frontend",
+  "summary": "Frontend onboarding",
   "source": "index.md",
   "theme": "",
   "status": [
@@ -15,8 +15,8 @@
   ],
   "category": null,
   "tags": [
-    "android",
-    "kotlin"
+    "frontend",
+    "vue"
   ],
   "feedback": "https://github.com/SolaceDev/solace-dev-codelabs/blob/master/markdown/android-test",
   "url": "index"
