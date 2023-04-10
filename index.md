@@ -11,32 +11,76 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 
 ## What you'll learn: overview
 
-TODO
+Welcome to the frontend onboarding! In this onboarding you will learn how development happens at Wisemen.
+You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket and Jira.
 
 ## What you need: Prerequisites
 
 ### IDE
 
+There are 2 different IDE's you can use to work with Vue. You can use either **Visual Studio Code** or **WebStorm**.
+
+#### WebStorm
+WebStorm is a JavaScript IDE with complete set of tools for client-side and server-side development and testing.
+It provides code completion, on-the-fly error detection, powerful navigation and refactoring for JavaScript, TypeScript, CSS, HTML and more.
+
+[Download WebStorm](https://www.jetbrains.com/webstorm/download)
+
+### Node.js
+Node.js is an open-source, cross-platform, back-end JavaScript runtime environment 
+that runs on the V8 engine and executes JavaScript code outside a web browser.
+
+[Download Node.js](https://nodejs.org/en/download/)
+
+### NPM vs PNPM
+
+* [NPM](https://www.npmjs.com/get-npm)
+NPM is the default package manager for the JavaScript runtime environment Node.js. The NPM program is installed on Node.js when you install it from its website.
+
+* [PNPM](https://pnpm.io/installation)
+PNPM is a fast, disk space efficient package manager. It is designed to be installed globally, and it installs all the packages that you need in your project in a single place, using symlinks.
+
+  
 ### Figma
-Our designers work with **Figma**. You can download it here:
-* [Figma](https://www.figma.com/downloads/)
+Our designers work with **Figma**. You can view all of our designs here:
+
+[Wisemen Figma](https://www.figma.com/files/team/1070403287155222588/Wisemen?fuid=1070747045190465434)
 
 To access the designs you need to log in with your Wisemen account:
-* [Figma wireframes](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?node-id=407-4095&t=2qdyy89lKwN7dFw3-0)
+[Todo wireframes](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?node-id=407-4095&t=2qdyy89lKwN7dFw3-0)
 
 ### BitBucket repository
-*ToDo: Add link to BitBucket repository*
+Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development
+projects that use the Git revision control system.
+
+[Wisemen BitBucket](https://bitbucket.org/product)
 
 ### Jira access
+
+For this onboarding you will be working with Jira to track your progress. You can find the Jira board here:
+[Jira Todo]()
+
+The Jira contains all the requirements for creating the to-do app.
+
 *ToDo: Add link to Jira*
 
 ## What you'll do
 
 ### Project explanation
-Lorem impsum
+
+You will be creating a simple to-do app. The app can be used to create, edit and delete to-do's.
+The backend is already created and you can find the documentation here:
+
+[Backend documentation](https://bitbucket.org/wisemen/wisemen-onboarding-backend/src/master/)
 
 ### Requirements
-Lorem impsum
+
+- Login with your Wisemen gmail account
+- View your to-do's in a list
+- Create a new to-do
+- Edit a to-do
+- Delete a to-do
+- Mark a to-do as done
 
 ### Designs
 Insert designs here
@@ -112,53 +156,140 @@ TODO
 TODO
 ```
 
-## Structure
+## Project Structure
 
-### Folder
+### Folder structure
+For this project we will be using a 'split-by-type' folder structure. This is recommended for small applications.
+
+You can read more about it here: [Folder structure](https://thefrontendbible.com/project-structure)
 
 ### Components
 
+Components are the building blocks of Vue.js applications. 
+They are self-contained pieces of code that can be reused throughout your application.
+
+You can read more about it here: [Components](https://thefrontendbible.com/components)
+
 ### Views
+Views are the pages of your application. They are the components that are rendered when a specific route is visited.
+
+You can read more about it here: [Views](https://v3.vuejs.org/guide/routing.html#basic-routes)
 
 ### Router
+The router is the core of Vue.js applications. It is used to navigate between different views.
+
+You can read more about it here: 
+
+- [Best practices](https://thefrontendbible.com/reusable-code/router)
+- [Router](https://v3.vuejs.org/guide/routing.html#basic-routes)
 
 ### Stores
+Stores are used to store the state of your application. This is useful when you want to share data between different components.
+
+You can read more about it here: 
+- [Best practices](https://thefrontendbible.com/reusable-code/stores)
+- [Pinia](https://pinia.esm.dev/)
 
 ### Services & Http
 
+Services are used to fetch data from the backend. These backend calls are made using the Http client.
+
+You can read more about it here:
+- [Best practices](https://thefrontendbible.com/reusable-code/services)
+
 ### Composables & Utils
 
+#### Utils
+Utils are reusable pieces of code that can be throughout your application. 
+They contain no state and are not tied to a specific component.
+
+You can read more about it here: [Utils](https://thefrontendbible.com/reusable-code/utils)
+
+#### Composables
+
+Composables look like a util function, but the main difference is that they can contain state and leverage the reactivity of Vue.js.
+
+You can read more about it here: [Composables](https://thefrontendbible.com/reusable-code/composables)
+
 ### Assets
+Assets are files that are used throughout your application. This can be images, fonts, icons, etc.
+
+You can read more about it here: [Assets](https://thefrontendbible.com/assets)
 
 ### Locales
+Locales are used to store the translations of your application. This is useful when you want to support multiple languages.
 
-### Models, Types & Interfaces
+You can read more about it here: [Locales](https://thefrontendbible.com/locales)
 
-## Building your first view
-- start with the main todo-app view
-- build your first components
-- add axios to fetch data from the backend
-- add your components to a v-for loop
-- when main view is finished, add it to the router
-- start with login view
-- build your first form
-- add validation
-- add axios to fetch data from the backend
-- when login view is finished, add it to the router
+### Types & Interfaces
+At Wisemen we use Typescript to type all of our code.
+This is useful when you want to make sure that your code is correct and leverage the power of intellisense.
+It will also help you to avoid bugs, improve your code quality and make your code more readable.
 
-- start with the modal in the main view
-- create your first modal/pop-up
-- use axios to update the to-do's
+Lastly, your team will be able to understand your code better and don't have to make assumptions about the code.
 
+You can read more about it here: [Types & Interfaces](https://thefrontendbible.com/types)
 
-### 1. Create a new router
+## Let's get started
 
+Now that we have a basic understanding of the project structure
+and the different kinds of elements that a application contains,
+let's get started with building the application.
 
-### 2. Create a new view
+### 1. Creating your Login view
 
+- Create a view called `Login.vue` in the `src/views` folder.
+- Create a new file `router.ts` in the `src/router` folder.
+- Implement a router using the `createRouter` function from `vue-router`.
+- Add the `Login.vue` view to the router (lazy loaded).
 
-### 3. Create a new component
+### 2. Creating the HTTP client
 
-### 4. Create a new store
+- Create a new file called `httpClient.ts` in the `src/http` folder.
+- Add the `axios` package to the project.
+- Create a new instance of axios and export it.
 
-### 5. Create a new service
+### 3. Creating the auth service
+
+- Create a new file called `auth.service.ts` in the `src/services` folder.
+- Import the `httpClient` from the `src/http` folder.
+- Create a new function called `login` that takes a `username` and `password` as parameters.
+- Use the `httpClient` to make a `POST` request to the `/login` endpoint.
+
+### 4. Creating the login form
+
+- Create a new file called `LoginForm.vue` in the `src/components` folder.
+- Add a that allows the user to enter a `username` and `password`.
+- Add the `LoginForm` component to the `Login.vue` view.
+
+### 5. Creating the Todo view
+
+- Create a `TodoView.vue` in the `src/views` folder and add it to the router.
+  - Make sure that the view is lazy loaded.
+  - Make sure that the view is only accessible when the user is logged in.
+- Create a `TodoList.vue` in the `src/components` folder and add it to the `TodoView.vue` view.
+  - Display a list of todos.
+  - Display a message when there are no todos
+  - Display a loading state when the todos are being fetched.
+- Create a `TodoForm.vue` in the `src/components` folder and add it to the `TodoView.vue` view.
+  - The user can create a new todo by providing a `title` and `description`.
+  - The user can update existing todos by selecting a todo from the list.
+
+### 6. Creating the Todo service
+- Create a `todo.service.ts` in the `src/services` folder and implement the following functions:
+  - The `getAll` function should return a list of todos.
+  - The `deleteById` function should delete a todo by id.
+  - The `create` function should create a new todo.
+  - The `update` function should update a todo.
+
+### 7. Creating the Todo store
+- Create a `todo.store.ts` in the `src/stores` folder and implement the `fetchAll` function.
+  - The `fetchAll` function should call the `getAll` function from the `todo.service.ts` file.
+  - Implement the `deleteById`, `create` and `update` functions.
+
+## Documentation
+
+- [The Frontend Bible](https://thefrontendbible.com/)
+- [Vue.js](https://v3.vuejs.org/)
+- [Vue Router](https://next.router.vuejs.org/)
+- [Pinia](https://pinia.esm.dev/)
