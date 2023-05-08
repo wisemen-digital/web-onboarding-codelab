@@ -6,7 +6,6 @@ categories:
 environments: Vue
 status: Draft
 feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/markdown/android-test
-style: './style.css'
 
 # Wiselab Onboarding Frontend
 
@@ -95,11 +94,17 @@ Insert designs here
 
 ## Project setup
 
+<img width="300" src="img/cat_i_am_ready.gif">
+
 ### 1. Generate a new Vue3 project
 
-```typescript
-TODO
-```
+> We use the latest version of Vue3 for this project. Vue3 is the latest version of Vue and has some new features and
+> improvements over Vue2. You can read more about Vue3 here: [Vue3 website]('https://v3.vuejs.org/')
+
+---
+
+<img width="120" src="img/vite_logo.png">
+
 
 ### 2. Vite
 
@@ -111,68 +116,74 @@ of two major parts:
 - A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for
   production.
 
-#### Config
+#### 2.1 Config
 
 > Vite is configured using a `vite.config.js` file in the root of your project. This file is written in CommonJS format
 > and should export a plain JavaScript object.
 
-```typescript
-TODO
-```
 
-#### Plugins
+#### 2.2 Plugins
 
 > Vite supports a plugin system that allows you to customize the behavior of Vite itself and integrate with other tools.
 > Plugins can be configured in the `vite.config.js` file.
 
-```typescript
-TODO
-```
+<img width="120" src="img/pnpm_logo.svg">
+<img width="80" src="img/vs_icon.png">
+<img width="140" src="img/npm_logo.png">
 
-### 2. Package.json
+### 3. Package.json
 
 > The package.json file is used to give information to npm that allows it to identify the project as well as handle the
 > project's dependencies. npm can install the packages you specify in your package.json file.
+> The main use of the package.json file is to list the packages that your project depends on and to ensure that your 
+> colleagues get the same packages when they do `npm install`.
 
-#### Scripts
+#### 3.1 Scripts
 
-#### Dependencies vs Dev Dependencies
+> The scripts property is used to specify a list of scripts that can be run using `npm run <script-name>`.
+> It's written as a JSON object where each key is the name of a script and the value is the command to run for.
+> Most common scripts are `start` and `build`.
 
-### 3. Tailwind CSS
+#### 3.2 Dependencies vs Dev Dependencies
+
+> Dev dependencies are dependencies that are only used during development and are not required for production.
+> Dependencies are required for production.
+
+<img width="120" src="img/tailwind_logo.png">
+
+
+### 4. Tailwind CSS
 
 > Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It's completely
 > customizable, completely extensible, and amazingly feature-rich.
 
-```typescript
-TODO
-```
+👉 [Tailwind website](https://tailwindcss.com/)
 
-### 4. ESLint config
+<img width="120" src="img/ESLint_logo.png">
+
+### 5. ESLint config
 
 > ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of
-> making code more consistent and avoiding bugs. In many ways, it is similar to JSLint and JSHint with a few exceptions:
+> making code more consistent and avoiding bugs. Is helps a lot with code formatting and makes it easier to write code.
+> Also in team projects it helps to keep the code consistent.
 
-```typescript
-TODO
-```
+<img width="120" src="img/vue_i18n_logo.svg">
 
-### 5. i18n
+### 6. i18n
 
 > i18n is a short name for internationalization. It is a process of designing and developing a software application so
 > that it can be adapted to various languages and regions without engineering changes.
+> Within the company we use [Vue i18n](https://vue-i18n.intlify.dev/) to translate our applications.
 
-```typescript
-TODO
-```
+<img width="120" src="img/typescript_logo.png">
 
-### 6. What the Typescript
+### 7. What the Typescript
 
-> TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. Open
-> source.
 
-```typescript
-TODO
-```
+> TypeScript is a tool that helps developers write code with fewer bugs. TypeScript is a superset of JavaScript,
+> meaning any valid JavaScript code is also valid TypeScript code. It helps a lot with type checking and makes it easier
+> to write code.
+
 
 ## Project Structure
 
