@@ -100,6 +100,7 @@ Insert designs here
 
 > We use the latest version of Vue3 for this project. Vue3 is the latest version of Vue and has some new features and
 > improvements over Vue2. You can read more about Vue3 here: [Vue3 website]('https://v3.vuejs.org/')
+> Make sure you use the CLI version to create the project.
 
 ---
 
@@ -157,6 +158,11 @@ of two major parts:
 > Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It's completely
 > customizable, completely extensible, and amazingly feature-rich.
 
+### 4.1 Tailwind config
+
+> Tailwinds config file is used to configure the framework. You can add custom colors, fonts, breakpoints and more.
+> This is where you can customize the framework to your needs.
+
 👉 [Tailwind website](https://tailwindcss.com/)
 
 <img width="120" src="img/ESLint_logo.png">
@@ -167,6 +173,8 @@ of two major parts:
 > making code more consistent and avoiding bugs. Is helps a lot with code formatting and makes it easier to write code.
 > Also in team projects it helps to keep the code consistent.
 
+👉 __Please make sure you use the Wisemen ESLint config file, read more here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-config)__
+
 <img width="120" src="img/vue_i18n_logo.svg">
 
 ### 6. i18n
@@ -174,6 +182,8 @@ of two major parts:
 > i18n is a short name for internationalization. It is a process of designing and developing a software application so
 > that it can be adapted to various languages and regions without engineering changes.
 > Within the company we use [Vue i18n](https://vue-i18n.intlify.dev/) to translate our applications.
+> It's important to understand the power of this tool since it will save you a lot of time when creating multilingual
+> applications.
 
 <img width="120" src="img/typescript_logo.png">
 
@@ -184,6 +194,21 @@ of two major parts:
 > meaning any valid JavaScript code is also valid TypeScript code. It helps a lot with type checking and makes it easier
 > to write code.
 
+<img width="220" src="img/google_fonts_logo.png">
+
+### 8. ⚠️ Google fonts ⚠️
+> It's important to know that we cannot use Google fonts CDN in our projects. This rule is only for public websites of our clients.
+> We have alternative ways of using Google fonts in our projects. 
+
+> 👉 __Please read more here: [Afstappen van Google Fonts en CDN javascript](https://appwise.atlassian.net/wiki/spaces/FRONT/pages/631734284/Afstappen+van+Google+Fonts+en+CDN+javascript).
+> If you have any questions about this, please contact your team lead.__
+
+
+### 9. @ Alias for src folder
+> In our vue imports, we can use the @ alias to import files from the src folder. This is a lot easier than using relative paths.
+> For example: `import { Button } from '@/components'` instead of `import { Button } from '../../components'`
+> This alias is configured in the `vite.config.js` file.
+> Maybe do a little research about how you can configure your vite environment to accept the usage of this alias.
 
 ## Project Structure
 
