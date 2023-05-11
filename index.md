@@ -94,7 +94,7 @@ Insert designs here
 
 ## Project setup
 
-<img width="300" src="img/cat_i_am_ready.gif">
+<img width="300" src="img/projectSetup/cat_i_am_ready.gif">
 
 ### 1. Generate a new Vue3 project
 
@@ -104,7 +104,7 @@ Insert designs here
 
 ---
 
-<img width="120" src="img/vite_logo.png">
+<img width="120" src="img/projectSetup/vite_logo.png">
 
 
 ### 2. Vite
@@ -128,9 +128,9 @@ of two major parts:
 > Vite supports a plugin system that allows you to customize the behavior of Vite itself and integrate with other tools.
 > Plugins can be configured in the `vite.config.js` file.
 
-<img width="120" src="img/pnpm_logo.svg">
-<img width="80" src="img/vs_icon.png">
-<img width="140" src="img/npm_logo.png">
+<img width="120" src="img/projectSetup/pnpm_logo.svg">
+<img width="80" src="img/projectSetup/vs_icon.png">
+<img width="140" src="img/projectSetup/npm_logo.png">
 
 ### 3. Package.json
 
@@ -150,7 +150,7 @@ of two major parts:
 > Dev dependencies are dependencies that are only used during development and are not required for production.
 > Dependencies are required for production.
 
-<img width="120" src="img/tailwind_logo.png">
+<img width="120" src="img/projectSetup/tailwind_logo.png">
 
 
 ### 4. Tailwind CSS
@@ -158,14 +158,14 @@ of two major parts:
 > Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It's completely
 > customizable, completely extensible, and amazingly feature-rich.
 
-### 4.1 Tailwind config
+#### 4.1 Tailwind config
 
 > Tailwinds config file is used to configure the framework. You can add custom colors, fonts, breakpoints and more.
 > This is where you can customize the framework to your needs.
 
 👉 [Tailwind website](https://tailwindcss.com/)
 
-<img width="120" src="img/ESLint_logo.png">
+<img width="120" src="img/projectSetup/ESLint_logo.png">
 
 ### 5. ESLint config
 
@@ -175,7 +175,7 @@ of two major parts:
 
 👉 __Please make sure you use the Wisemen ESLint config file, read more here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-config)__
 
-<img width="120" src="img/vue_i18n_logo.svg">
+<img width="120" src="img/projectSetup/vue_i18n_logo.svg">
 
 ### 6. i18n
 
@@ -185,7 +185,7 @@ of two major parts:
 > It's important to understand the power of this tool since it will save you a lot of time when creating multilingual
 > applications.
 
-<img width="120" src="img/typescript_logo.png">
+<img width="120" src="img/projectSetup/typescript_logo.png">
 
 ### 7. What the Typescript
 
@@ -194,7 +194,7 @@ of two major parts:
 > meaning any valid JavaScript code is also valid TypeScript code. It helps a lot with type checking and makes it easier
 > to write code.
 
-<img width="220" src="img/google_fonts_logo.png">
+<img width="220" src="img/projectSetup/google_fonts_logo.png">
 
 ### 8. ⚠️ Google fonts ⚠️
 > It's important to know that we cannot use Google fonts CDN in our projects. This rule is only for public websites of our clients.
@@ -206,11 +206,42 @@ of two major parts:
 
 ### 9. @ Alias for src folder
 > In our vue imports, we can use the @ alias to import files from the src folder. This is a lot easier than using relative paths.
-> For example: `import { Button } from '@/components'` instead of `import { Button } from '../../components'`
+> For example: 
+```js 
+import { Button } from '@/components
+``` 
+> instead of: 
+```js
+import { Button } from '../../components'
+```
 > This alias is configured in the `vite.config.js` file.
 > Maybe do a little research about how you can configure your vite environment to accept the usage of this alias.
 
+### 10. Important files
+
+#### 10.1 .env
+
+> The `.env` file is used to store environment variables. These variables can be used in your application.
+> It is mainly used to separate development and production variables. For example, you can use a different API url in
+> development than in production.
+
+`⚠️ Using an .env is not required for this project.`
+
+#### 10.2 .gitignore
+
+> The `.gitignore` file is used to tell git which files it should ignore. For example, you don't want to commit your
+> node_modules folder to git. This file is used to tell git to ignore this folder.
+
+### That's it for now! 🎉 Soak it all in and let's get started with the project setup! 🚀
+
+<img width="400" src="img/projectSetup/look_up.gif">
+
+
+
+
 ## Project Structure
+
+<img width="300" src="img/projectStructure/organized.gif">
 
 ### Folder structure
 
