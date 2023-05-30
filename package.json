@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Onboarding codelab for Wisemen frontend developers",
   "scripts": {
-    "build": "./claat-linux export -o dist index.md",
-    "serve": "nodemon --watch index.md --exec './claat export index.md && http-server index'"
-  },
+    "build": "./claat-linux export -o dist index.md && sed -i \"\" -e \"/body/i\\\\\n<link rel=\\\"stylesheet\\\" href=\\\"css/style.css\\\">\"",
+    "serve": "nodemon --watch index.md --exec './claat export index.md && sed -i \"\" -e \"/body/i\\\\\n<link rel=\\\"stylesheet\\\" href=\\\"css/style.css\\\">\" index/index.html && http-server index'"  },
   "dependencies": {
     "http-server": "^14.1.1",
     "nodemon": "^2.0.3"
