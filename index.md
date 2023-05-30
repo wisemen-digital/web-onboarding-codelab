@@ -1,4 +1,4 @@
-author: JJ & KK
+author: JJ & KK & NB
 summary: Frontend onboarding
 id: index
 tags: Frontend, Vue
@@ -14,6 +14,24 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 Welcome to the frontend onboarding! In this onboarding you will learn how development happens at Wisemen.
 You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket and Jira.
 
+This onboarding is designed to be completed in roughly 3-4 days. 
+This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster than people with less experience.
+
+You will be working on a small to-do app.
+This app will be used to learn the same way we, as front-end developers work at Wisemen. You will be working with the tools we use at Wisemen and you will be working with the same workflow.
+
+We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
+The way we do this will be explained in the onboarding.
+
+Good luck on becoming the front-end developer you are meant to be!
+
+
+
+![](img/programmer.gif)
+
+
+
+
 ## What you need: Prerequisites
 
 ### IDE
@@ -26,12 +44,29 @@ WebStorm is a JavaScript IDE with complete set of tools for client-side and serv
 It provides code completion, on-the-fly error detection, powerful navigation and refactoring for JavaScript, TypeScript,
 CSS, HTML and more.
 
+Webstorm is a paid IDE. You can get a license from Wisemen. Ask your buddy!
+
 [Download WebStorm](https://www.jetbrains.com/webstorm/download)
+
+
+#### Visual Studio Code
+Visual Studio Code is a source-code editor developed by Microsoft for Windows, Linux and macOS. 
+It includes support for debugging, syntax highlighting, intelligent code completion, snippets, and code refactoring.
+
+Visual Studio Code is a free IDE. You can download it from the website.
+
+[Download vscode](https://code.visualstudio.com/download)
+
+Choose the IDE you want to work with and download it.
+
+
 
 ### Node.js
 
 Node.js is an open-source, cross-platform, back-end JavaScript runtime environment
 that runs on the V8 engine and executes JavaScript code outside a web browser.
+
+Node.js is necessary to run the Vue project. You can download it from the website.
 
 [Download Node.js](https://nodejs.org/en/download/)
 
@@ -45,9 +80,19 @@ that runs on the V8 engine and executes JavaScript code outside a web browser.
   PNPM is a fast, disk space efficient package manager. It is designed to be installed globally, and it installs all the
   packages that you need in your project in a single place, using symlinks.
 
+The difference between NPM and PNPM is that PNPM uses symlinks to link packages to your project. This means that if you have multiple projects that use the same package, it will only be installed once on your computer. This saves a lot of disk space.
+PNPM is also faster than NPM because it uses symlinks.
+
 ### Figma
 
-Our designers work with **Figma**. You can view all of our designs here:
+Our designers work with **Figma**.
+Figma is a vector graphics editor and prototyping tool which is browser-based or can be installed on macOS or Windows.
+We recommend you to install the desktop app.
+
+[Download Figma](https://www.figma.com/downloads/)
+
+Take a look around in Figma and try to get familiar with the tool. You will be using it a lot in the future.
+You can view all of our designs here:
 
 [Wisemen Figma](https://www.figma.com/files/team/1070403287155222588/Wisemen?fuid=1070747045190465434)
 
@@ -59,12 +104,23 @@ To access the designs you need to log in with your Wisemen account:
 Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development
 projects that use the Git revision control system.
 
+All your future projects will be hosted on BitBucket.
+
 [Wisemen BitBucket](https://bitbucket.org/product)
+
+If you are not yet familiar with Bitbucket and/or Git, Here is great article to get you started:
+[Bitbucket Git tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control)
+
+We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
+In the article above you can find a section about pull requests to get you started!
 
 ### Jira access
 
 For this onboarding you will be working with Jira to track your progress. You can find the Jira board here:
 [Jira Todo]()
+
+Jira is used to track the progress of your project and manage the tasks that need to be done.
+All the requirements for the to-do app are in the Jira. You will be creating tasks in the Jira to keep track of your progress. (weet niet of ze zelf ticketjes hiervoor moeten maken of we ze dat geven?)
 
 The Jira contains all the requirements for creating the to-do app.
 
