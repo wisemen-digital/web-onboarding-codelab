@@ -1,4 +1,4 @@
-author: JJ & KK
+author: JJ & KK & NB
 summary: Frontend onboarding
 id: index
 tags: Frontend, Vue
@@ -14,6 +14,24 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 Welcome to the frontend onboarding! In this onboarding you will learn how development happens at Wisemen.
 You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket and Jira.
 
+This onboarding is designed to be completed in roughly 3-4 days. 
+This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster than people with less experience.
+
+You will be working on a small to-do app.
+This app will be used to learn the same way we, as front-end developers work at Wisemen. You will be working with the tools we use at Wisemen and you will be working with the same workflow.
+
+We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
+The way we do this will be explained in the onboarding.
+
+Good luck on becoming the front-end developer you are meant to be!
+
+
+
+![](img/programmer.gif)
+
+
+
+
 ## What you need: Prerequisites
 
 ### IDE
@@ -26,12 +44,29 @@ WebStorm is a JavaScript IDE with complete set of tools for client-side and serv
 It provides code completion, on-the-fly error detection, powerful navigation and refactoring for JavaScript, TypeScript,
 CSS, HTML and more.
 
+Webstorm is a paid IDE. You can get a license from Wisemen. Ask your buddy!
+
 [Download WebStorm](https://www.jetbrains.com/webstorm/download)
+
+
+#### Visual Studio Code
+Visual Studio Code is a source-code editor developed by Microsoft for Windows, Linux and macOS. 
+It includes support for debugging, syntax highlighting, intelligent code completion, snippets, and code refactoring.
+
+Visual Studio Code is a free IDE. You can download it from the website.
+
+[Download vscode](https://code.visualstudio.com/download)
+
+Choose the IDE you want to work with and download it.
+
+
 
 ### Node.js
 
 Node.js is an open-source, cross-platform, back-end JavaScript runtime environment
 that runs on the V8 engine and executes JavaScript code outside a web browser.
+
+Node.js is necessary to run the Vue project. You can download it from the website.
 
 [Download Node.js](https://nodejs.org/en/download/)
 
@@ -45,9 +80,19 @@ that runs on the V8 engine and executes JavaScript code outside a web browser.
   PNPM is a fast, disk space efficient package manager. It is designed to be installed globally, and it installs all the
   packages that you need in your project in a single place, using symlinks.
 
+The difference between NPM and PNPM is that PNPM uses symlinks to link packages to your project. This means that if you have multiple projects that use the same package, it will only be installed once on your computer. This saves a lot of disk space.
+PNPM is also faster than NPM because it uses symlinks.
+
 ### Figma
 
-Our designers work with **Figma**. You can view all of our designs here:
+Our designers work with **Figma**.
+Figma is a vector graphics editor and prototyping tool which is browser-based or can be installed on macOS or Windows.
+We recommend you to install the desktop app.
+
+[Download Figma](https://www.figma.com/downloads/)
+
+Take a look around in Figma and try to get familiar with the tool. You will be using it a lot in the future.
+You can view all of our designs here:
 
 [Wisemen Figma](https://www.figma.com/files/team/1070403287155222588/Wisemen?fuid=1070747045190465434)
 
@@ -59,12 +104,23 @@ To access the designs you need to log in with your Wisemen account:
 Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development
 projects that use the Git revision control system.
 
+All your future projects will be hosted on BitBucket.
+
 [Wisemen BitBucket](https://bitbucket.org/product)
+
+If you are not yet familiar with Bitbucket and/or Git, Here is great article to get you started:
+[Bitbucket Git tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control)
+
+We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
+In the article above you can find a section about pull requests to get you started!
 
 ### Jira access
 
 For this onboarding you will be working with Jira to track your progress. You can find the Jira board here:
 [Jira Todo]()
+
+Jira is used to track the progress of your project and manage the tasks that need to be done.
+All the requirements for the to-do app are in the Jira. You will be creating tasks in the Jira to keep track of your progress. (weet niet of ze zelf ticketjes hiervoor moeten maken of we ze dat geven?)
 
 The Jira contains all the requirements for creating the to-do app.
 
@@ -328,68 +384,151 @@ Lastly, your team will be able to understand your code better and don't have to 
 
 You can read more about it here: [Types & Interfaces](https://thefrontendbible.com/types)
 
-## Let's get started
+## PROJECT: Overview
 
 Now that we have a basic understanding of the project structure
-and the different kinds of elements that a application contains,
-let's get started with building the application.
+and the different kinds of elements that a frontend should contain,
+let's get started with building the acutal application.
 
-### 1. Creating your Login view
+Before we can create, update and delete todo's, we need to be able to login to the application.
+There are several components that we need to create before we can start with the authentication flow.
 
-- Create a view called `Login.vue` in the `src/views` folder.
-- Create a new file `router.ts` in the `src/router` folder.
-- Implement a router using the `createRouter` function from `vue-router`.
-- Add the `Login.vue` view to the router (lazy loaded).
+We will need to create a view that contains a login form. This form will be used to send the login credentials to the backend. 
+We will also need to create a service that will be used to send the login request to the backend.
+Lastly, we will need to create a store that will be used to store the user information.
+After we have created these components, we can start with the authentication flow.
 
-### 2. Creating the HTTP client
+Once the user is logged in, we will need to create a view that contains a list of todo's. 
+This list will be fetched from the backend and displayed in a list view.
+We will also need to create a service that will be used to fetch the todo's from the backend and a store that will be used to store the todo's.
 
-- Create a new file called `httpClient.ts` in the `src/http` folder.
+After we have created these components, we can start with creating todo's. 
+We will need to create a view that contains a form that can be used to create a new todo.
+We will also need to create a service that will be used to send the todo to the backend.
+
+## PROJECT: Http client
+
+The most important aspect of programming is **separation of concerns.** and **DRY** (Don't Repeat Yourself).
+This means that you should separate your code into different layers and files.
+This will make your code more readable, reusable and easier to maintain.
+
+You can easily do your calls in the component itself, but this will make your component less readable and harder to maintain in the future.
+
+That's why we will start with creating a service that will be used to send the login request to the backend.
+
+### Creating the HTTP client
+
 - Add the `axios` package to the project.
+- Create a new file called `httpClient.ts` in the `src/http` folder.
 - Create a new instance of axios and export it.
+- Add an interceptor that will be used to add the `Authorization` header to all requests.
 
-### 3. Creating the auth service
-
+### Creating the auth service
 - Create a new file called `auth.service.ts` in the `src/services` folder.
 - Import the `httpClient` from the `src/http` folder.
 - Create a new function called `login` that takes a `username` and `password` as parameters.
 - Use the `httpClient` to make a `POST` request to the `/login` endpoint.
 
-### 4. Creating the login form
+## PROJECT: Router
 
+The router is the core of Vue.js applications. It is used to navigate between different views.
+It is also used to add guards to specific routes. This is useful when you want to protect a route from being accessed by unauthorized users.
+
+### Creating the router
+
+- Create a new file `router.ts` in the `src/router` folder.
+- Implement a router using the `createRouter` function from `vue-router`.
+- Create empty components called `LoginView.vue` and `TodoView.vue` in the `src/views` folder.
+- Add a `login` and `todos` route to the router that lazy loads the `LoginView` and `TodoView` components.
+
+### Router guards
+
+- Add a `beforeEnter` guard to the `todos` route that checks if the user is logged in.
+- If the user is not logged in, redirect the user to the `login` route.
+- If the user is logged in, continue to the `todos` route.
+
+## PROJECT: Auth store
+
+### Creating the auth store
+
+The store will help us to save the tokens after a successful login. 
+Another reason to use a store is to manage your loading state.
+This will help us to show a loading indicator when the user is logging in.
+That's why we will always use a store to do our backend calls and never directly use the service in the component. (separation of concerns)
+
+- Create a new file called `auth.store.ts` in the `src/stores` folder.
+- Import the `auth.service` from the `src/services` folder.
+- Create a new store using the `defineStore` function from `pinia`.
+- Add a `accessToken` and `refreshToken` property to the store.
+- Add a `login` function to the store that takes a `username` and `password` as parameters.
+- Use the `auth.service` to make a `POST` request to the `/login` endpoint.
+- Save the `accessToken` and `refreshToken` in the store after a successful login.
+- PRO TIP: You can use the `useLocalStore` composable from VueUse to store the user information in the local storage.
+
+## PROJECT: Login view
+
+Now that we have created the store, service and router, we can start with creating the login view.
+Views are the "Smart components" in our application. They are allowed to import stores, routers, dumb components, etc.
+
+Our Login view will orchestrate the login flow. It will use the `authStore` to login the user and the `router` to navigate to the `TodoView` after a successful login.
+
+### Creating your Login view
+
+- Create a view called `Login.vue` in the `src/views` folder.
 - Create a new file called `LoginForm.vue` in the `src/components` folder.
-- Add a that allows the user to enter a `username` and `password`.
+- Add a form that allows the user to enter a `username` and `password`.
 - Add the `LoginForm` component to the `Login.vue` view.
 
-### 5. Creating the Todo view
+### Creating the login flow
 
-- Create a `TodoView.vue` in the `src/views` folder and add it to the router.
-    - Make sure that the view is lazy loaded.
-    - Make sure that the view is only accessible when the user is logged in.
+- Import the `useAuthStore` and `useRouter` in your `LoginView`.
+- Create a new `authStore` and `router` instance.
+- Add a `login` function that passes the credentials from the form to the `authStore`.
+- Use the `router` to navigate to the `TodoView.vue` view after successfully logging in.
+
+## PROJECT: Displaying todo's
+
+Now that we have created the login flow, we can start with creating the todo view. 
+After completing the login functionality, you should now have a good understanding of how we're going to create the todo view.
+
+- Create a `todo.service.ts` in the `src/services` folder and implement the following functions:
+    - The `getAll` function should return a list of todos.
+  - Don't forget to type the response.
+- Create a `todo.store.ts` in the `src/stores` folder and implement the `fetchAll` function.
 - Create a `TodoList.vue` in the `src/components` folder and add it to the `TodoView.vue` view.
     - Display a list of todos.
     - Display a message when there are no todos
     - Display a loading state when the todos are being fetched.
-- Create a `TodoForm.vue` in the `src/components` folder and add it to the `TodoView.vue` view.
-    - The user can create a new todo by providing a `title` and `description`.
-    - The user can update existing todos by selecting a todo from the list.
 
-### 6. Creating the Todo service
+## PROJECT: Creating Todo's
 
-- Create a `todo.service.ts` in the `src/services` folder and implement the following functions:
-    - The `getAll` function should return a list of todos.
-    - The `deleteById` function should delete a todo by id.
-    - The `create` function should create a new todo.
-    - The `update` function should update a todo.
+Now that we have created the todo view and have a list of our existing todo's, we can start with creating new todo's.
 
-### 7. Creating the Todo store
+The creation of a todo will be done in a modal. This modal will be displayed when the user clicks on the `Create todo` button.
+Modals are allowed to be smart components. The modal will contain a form that allows to enter the required information for creating a new todo. 
 
-- Create a `todo.store.ts` in the `src/stores` folder and implement the `fetchAll` function.
-    - The `fetchAll` function should call the `getAll` function from the `todo.service.ts` file.
-    - Implement the `deleteById`, `create` and `update` functions.
+- Create a `TodoModal.vue` in the `src/components` folder and add it to the `TodoView.vue` view.
+- Create a `TodoForm` component add it to the `TodoModal`.
+  - The user can create a new todo by providing a `title`, `description` and `deadline`.
+- Add validation to the form.
+- Add a `create` function to the `TodoService` that takes a `TodoForm` as parameter. 
+- Add a `create` function to the `TodoStore` that takes a `TodoForm` as parameter and calls the `create` function from the `TodoService`. 
+- Handle the click of the submit button of the form in the `TodoModal` component and call the `create` function from the `TodoStore`.
 
-## Documentation
+## PROJECT: Updating todo's
 
-- [The Frontend Bible](https://thefrontendbible.com/)
-- [Vue.js](https://v3.vuejs.org/)
-- [Vue Router](https://next.router.vuejs.org/)
-- [Pinia](https://pinia.esm.dev/)
+The last step is to allow the user to update todo's. This will be done by clicking on the edit button of a todo.
+We are going to extend the functionality of the `TodoModal` component to allow the user to update a todo.
+To achieve this, we need to know if the modal is opened in `create` or `update` mode. The easiest way to do this is to check if a todo is passed to the modal.
+
+- Add a parameters to the `open` function of the `TodoModal` component.
+- If a todo is passed to the modal, we are in `update` mode. If no todo is passed, we are in `create` mode.
+- Add a `update` and `delete` function to the `TodoService` that takes a `TodoForm` as parameter.
+- Implement the `update` and `delete` function in the `TodoStore`.
+- Handle the click of the **submit** and **delete** button of the form in and call the correct function from the `TodoStore`.
+
+## Finishing up
+
+Congratulations! You have successfully completed the Vue.js workshop. 
+Make sure that your project has been pushed to your repository and that you have created a pull request. 
+Fix any remarks that you have received from your mentor and wait for the final feedback.
