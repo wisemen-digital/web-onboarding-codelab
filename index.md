@@ -11,8 +11,14 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 
 ## What you'll learn: overview
 
+#### First of all, welcome to **Wisemen!** We are happy to have you here and we hope you will have a great time working with us.
+
+
+  <img width="200" src="img/projectSetup/Wisemen_Logo_Acid.png">
+
+
 Welcome to the frontend onboarding! In this onboarding you will learn how development happens at Wisemen.
-You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket and Jira.
+You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket Jira, and more.
 
 This onboarding is designed to be completed in roughly 3-4 days. 
 This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster than people with less experience.
@@ -36,7 +42,7 @@ Good luck on becoming the front-end developer you are meant to be!
 
 ### IDE
 
-There are 2 different IDE's you can use to work with Vue. You can use either **Visual Studio Code** or **WebStorm**.
+There are 2 different IDE's you can use to work with Vue. You can use either **Visual Studio Code** or **WebStorm**. The Choice is yours, so choose wisely.
 
 #### WebStorm
 
@@ -48,6 +54,13 @@ Webstorm is a paid IDE. You can get a license from Wisemen. Ask your buddy!
 
 [Download WebStorm](https://www.jetbrains.com/webstorm/download)
 
+Handy Plugins:
+- **Atom Material Icons** (cool file and folder icons)
+- **Bitbucket pull** requests (The plugin allows you to review Atlassian Bitbucket pull requests right in the IDE.)
+- **GitHub CoPilot** (AI pair programmer)
+- **Easy i18n** (i18n support in WebStorm)
+- **IntelliVue** (Vue.js support for WebStorm)
+
 
 #### Visual Studio Code
 Visual Studio Code is a source-code editor developed by Microsoft for Windows, Linux and macOS. 
@@ -56,6 +69,19 @@ It includes support for debugging, syntax highlighting, intelligent code complet
 Visual Studio Code is a free IDE. You can download it from the website.
 
 [Download vscode](https://code.visualstudio.com/download)
+
+Handy Plugins:
+- **Volar** (processing vue files)
+- **ESLint** (code formatting)
+- **Error lens** (showing errors in the code)
+- **Guthub Copilot** (AI pair programmer)
+- **I18n ally** (i18n support in vscode, managing translations)
+- **Pretty Typescript Errors** (formatting ts errors so they are more readable)
+- **Tailwind CSS intellisense** (tailwind css support)
+- **VSCode-icons** (cool file and folder icons)
+- **TODO tree** (showing all the TODO's in the project)
+- **Vitest** (running tests)
+- **GitLens** (git support)
 
 Choose the IDE you want to work with and download it.
 
@@ -176,7 +202,7 @@ of two major parts:
 #### 2.1 Config
 
 > Vite is configured using a `vite.config.js` file in the root of your project. This file is written in CommonJS format
-> and should export a plain JavaScript object.
+> and should export a plain JavaScript object. Make sure to change this file from `.js` to `.ts`
 
 
 #### 2.2 Plugins
@@ -250,6 +276,10 @@ of two major parts:
 > meaning any valid JavaScript code is also valid TypeScript code. It helps a lot with type checking and makes it easier
 > to write code.
 
+#### 7.1 Typescript config
+> The TypeScript config file is used to configure the TypeScript compiler. You can add custom types, change the
+> compiler options and more.
+
 <img width="220" src="img/projectSetup/google_fonts_logo.png">
 
 ### 8. ⚠️ Google fonts ⚠️
@@ -279,7 +309,8 @@ import { Button } from '../../components'
 
 > The `.env` file is used to store environment variables. These variables can be used in your application.
 > It is mainly used to separate development and production variables. For example, you can use a different API url in
-> development than in production.
+> development than in production. Most of our projects have 3 different `.env` files: `.env.development`, `.env.staging` and `.env.production`.
+> Locally you can override these variables by creating a `.env.local` file. This file will be ignored by git.
 
 `⚠️ Using an .env is not required for this project.`
 
@@ -344,6 +375,11 @@ Services are used to fetch data from the backend. These backend calls are made u
 You can read more about it here:
 
 - [Best practices](https://thefrontendbible.com/reusable-code/services)
+
+#### Vue query
+For fetching data from the backend we use [Vue Query](https://tanstack.com/query/v4/docs/vue/overview). Vue Query is a Vue plugin that
+makes it easy to fetch, cache and update asynchronous data in your components without the hassle of setting up a
+dedicated global store.
 
 ### Composables & Utils
 
@@ -429,6 +465,9 @@ That's why we will start with creating a service that will be used to send the l
 - Create a new function called `login` that takes a `username` and `password` as parameters.
 - Use the `httpClient` to make a `POST` request to the `/login` endpoint.
 
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
+
 ## PROJECT: Router
 
 The router is the core of Vue.js applications. It is used to navigate between different views.
@@ -447,6 +486,8 @@ It is also used to add guards to specific routes. This is useful when you want t
 - If the user is not logged in, redirect the user to the `login` route.
 - If the user is logged in, continue to the `todos` route.
 
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
 ## PROJECT: Auth store
 
 ### Creating the auth store
@@ -463,7 +504,9 @@ That's why we will always use a store to do our backend calls and never directly
 - Add a `login` function to the store that takes a `username` and `password` as parameters.
 - Use the `auth.service` to make a `POST` request to the `/login` endpoint.
 - Save the `accessToken` and `refreshToken` in the store after a successful login.
-- PRO TIP: You can use the `useLocalStore` composable from VueUse to store the user information in the local storage.
+- PRO TIP: You can use the `useLocalStorage` composable from VueUse to store the user information in the local storage.
+
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Login view
 
@@ -474,7 +517,7 @@ Our Login view will orchestrate the login flow. It will use the `authStore` to l
 
 ### Creating your Login view
 
-- Create a view called `Login.vue` in the `src/views` folder.
+- Create a view called `LoginVue.vue` in the `src/views` folder.
 - Create a new file called `LoginForm.vue` in the `src/components` folder.
 - Add a form that allows the user to enter a `username` and `password`.
 - Add the `LoginForm` component to the `Login.vue` view.
@@ -486,6 +529,8 @@ Our Login view will orchestrate the login flow. It will use the `authStore` to l
 - Add a `login` function that passes the credentials from the form to the `authStore`.
 - Use the `router` to navigate to the `TodoView.vue` view after successfully logging in.
 
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
 ## PROJECT: Displaying todo's
 
 Now that we have created the login flow, we can start with creating the todo view. 
@@ -494,11 +539,14 @@ After completing the login functionality, you should now have a good understandi
 - Create a `todo.service.ts` in the `src/services` folder and implement the following functions:
     - The `getAll` function should return a list of todos.
   - Don't forget to type the response.
-- Create a `todo.store.ts` in the `src/stores` folder and implement the `fetchAll` function.
+  - The `useGetAll` function should return a `useQuery` instance that fetches the todos from the backend. (If you're not sure how to use 
+    `useQuery`, you can take a look at the [Vue Query documentation](https://tanstack.com/query/v4/docs/vue/guides/queries).)
 - Create a `TodoList.vue` in the `src/components` folder and add it to the `TodoView.vue` view.
     - Display a list of todos.
     - Display a message when there are no todos
     - Display a loading state when the todos are being fetched.
+
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Creating Todo's
 
@@ -512,8 +560,11 @@ Modals are allowed to be smart components. The modal will contain a form that al
   - The user can create a new todo by providing a `title`, `description` and `deadline`.
 - Add validation to the form.
 - Add a `create` function to the `TodoService` that takes a `TodoForm` as parameter. 
-- Add a `create` function to the `TodoStore` that takes a `TodoForm` as parameter and calls the `create` function from the `TodoService`. 
+- In the `TodoService` create a `useCreate` function that uses the `create` function and returns a `useMutation` instance. (If you're not sure how to use 
+  `useMutation`, you can take a look at the [Vue Query documentation](https://tanstack.com/query/v4/docs/vue/guides/mutations).) 
 - Handle the click of the submit button of the form in the `TodoModal` component and call the `create` function from the `TodoStore`.
+
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Updating todo's
 
@@ -526,6 +577,8 @@ To achieve this, we need to know if the modal is opened in `create` or `update` 
 - Add a `update` and `delete` function to the `TodoService` that takes a `TodoForm` as parameter.
 - Implement the `update` and `delete` function in the `TodoStore`.
 - Handle the click of the **submit** and **delete** button of the form in and call the correct function from the `TodoStore`.
+
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## Finishing up
 
