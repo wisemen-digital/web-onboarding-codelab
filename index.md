@@ -27,10 +27,10 @@ You will be working on a small to-do app.
 This app will be used to learn the same way we, as front-end developers work at Wisemen. You will be working with the tools we use at Wisemen and you will be working with the same workflow.
 
 > aside positive
-> One important thing to know is that you will be creating most stuff from scratch in the codelab.
-> This is to make sure you understand how everything works and how everything is connected behind the scenes.
-> When we create project for a customer we start from our [project template](https://github.com/wisemen-digital/project-template-vue).
-> This template contains all the tools and configurations we use at Wisemen to built applications better and faster.
+> One important thing to know is that you will be creating most stuff from scratch in this codelab.
+> This is to make sure you understand how everything works and how the pieces are connected behind the scenes.
+> When we create projects for our customers we always start from our [project template](https://github.com/wisemen-digital/project-template-vue).
+> The project template contains pre-built features, components, views, tools and configurations so that we can get started quickly and don't have to reinvent the wheel every time we start a new project.
 
 We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
 The way we do this will be explained in the onboarding.
