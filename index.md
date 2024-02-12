@@ -11,8 +11,14 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 
 ## What you'll learn: overview
 
+#### First of all, welcome to **Wisemen!** We are happy to have you here and we hope you will have a great time working with us.
+
+
+  <img width="200" src="img/projectSetup/Wisemen_Logo_Acid.png">
+
+
 Welcome to the frontend onboarding! In this onboarding you will learn how development happens at Wisemen.
-You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket and Jira.
+You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket Jira, and more.
 
 This onboarding is designed to be completed in roughly 3-4 days.
 This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster than people with less experience.
@@ -31,7 +37,7 @@ Good luck on becoming the front-end developer you are meant to be!
 
 ### IDE
 
-There are 2 different IDE's you can use to work with Vue. You can use either **Visual Studio Code** or **WebStorm**.
+There are 2 different IDE's you can use to work with Vue. You can use either **Visual Studio Code** or **WebStorm**. The Choice is yours, so choose wisely.
 
 #### WebStorm
 
@@ -43,6 +49,14 @@ Webstorm is a paid IDE. You can get a license from Wisemen. Ask your buddy!
 
 [Download WebStorm](https://www.jetbrains.com/webstorm/download)
 
+Handy Plugins:
+- **Atom Material Icons** (cool file and folder icons)
+- **Bitbucket pull** requests (The plugin allows you to review Atlassian Bitbucket pull requests right in the IDE.)
+- **GitHub CoPilot** (AI pair programmer)
+- **Easy i18n** (i18n support in WebStorm)
+- **IntelliVue** (Vue.js support for WebStorm)
+
+
 #### Visual Studio Code
 
 Visual Studio Code is a source-code editor developed by Microsoft for Windows, Linux and macOS.
@@ -51,6 +65,19 @@ It includes support for debugging, syntax highlighting, intelligent code complet
 Visual Studio Code is a free IDE. You can download it from the website.
 
 [Download vscode](https://code.visualstudio.com/download)
+
+Handy Plugins:
+- **Volar** (processing vue files)
+- **ESLint** (code formatting)
+- **Error lens** (showing errors in the code)
+- **Guthub Copilot** (AI pair programmer)
+- **I18n ally** (i18n support in vscode, managing translations)
+- **Pretty Typescript Errors** (formatting ts errors so they are more readable)
+- **Tailwind CSS intellisense** (tailwind css support)
+- **VSCode-icons** (cool file and folder icons)
+- **TODO tree** (showing all the TODO's in the project)
+- **Vitest** (running tests)
+- **GitLens** (git support)
 
 Choose the IDE you want to work with and download it.
 
@@ -188,7 +215,7 @@ of two major parts:
 #### 2.1 Config
 
 > Vite is configured using a `vite.config.js` file in the root of your project. This file is written in CommonJS format
-> and should export a plain JavaScript object.
+> and should export a plain JavaScript object. Make sure to change this file from `.js` to `.ts`
 
 #### 2.2 Plugins
 
@@ -260,6 +287,10 @@ here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-con
 > meaning any valid JavaScript code is also valid TypeScript code. It helps a lot with type checking and makes it easier
 > to write code.
 
+#### 7.1 Typescript config
+> The TypeScript config file is used to configure the TypeScript compiler. You can add custom types, change the
+> compiler options and more.
+
 <img width="220" src="img/projectSetup/google_fonts_logo.png">
 
 ### 8. ⚠️ Google fonts ⚠️
@@ -297,7 +328,8 @@ import {Button} from '../../components'
 
 > The `.env` file is used to store environment variables. These variables can be used in your application.
 > It is mainly used to separate development and production variables. For example, you can use a different API url in
-> development than in production.
+> development than in production. Most of our projects have 3 different `.env` files: `.env.development`, `.env.staging` and `.env.production`.
+> Locally you can override these variables by creating a `.env.local` file. This file will be ignored by git.
 
 `⚠️ Using an .env is not required for this project.`
 
@@ -427,8 +459,11 @@ You can read more about it here: [Views](https://v3.vuejs.org/guide/routing.html
 
 #### Queries & Mutations (Tanstack)
 
+For fetching data from the backend we use [Vue Query](https://tanstack.com/query/v4/docs/vue/overview). Vue Query is a Vue plugin that
+makes it easy to fetch, cache and update asynchronous data in your components without the hassle of setting up a
+dedicated global store.
 
-Queries and mutations are used to fetch and update data from the backend. 
+We also use their mutations to update data in the backend.
 
 You can read more about it here:
 
@@ -443,7 +478,7 @@ You can read more about it here:
 
 - [Best practices](https://thefrontendbible.com/reusable-code/services)
 
-#### Locales
+### Locales
 
 Locales are used to store the translations of your application. This is useful when you want to support multiple
 languages.
@@ -501,6 +536,8 @@ The router is the core of Vue.js applications. It is used to navigate between di
 It is also used to add guards to specific routes. This is useful when you want to protect a route from being accessed by
 unauthorized users.
 
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
 ## PROJECT: Auth store
 
 ### Creating the auth store
@@ -518,11 +555,15 @@ Views are the "Smart components" in our application. They are allowed to import 
 Our Login view will orchestrate the login flow. It will use the `authStore` to login the user and the `router` to
 navigate to the `TodoView` after a successful login.
 
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
 ## PROJECT: Displaying todo's
 
 Now that we have created the login flow, we can start with creating the todo view.
 After completing the login functionality, you should now have a good understanding of how we're going to create the todo
 view.
+
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Creating Todo's
 
@@ -533,6 +574,8 @@ button.
 Modals are allowed to be smart components. The modal will contain a form that allows to enter the required information
 for creating a new todo.
 
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
 ## PROJECT: Updating todo's
 
 The last step is to allow the user to update todo's. This will be done by clicking on the edit button of a todo.
@@ -540,6 +583,8 @@ We are going to extend the functionality of the `TodoModal` component to allow t
 To achieve this, we need to know if the modal is opened in `create` or `update` mode. The easiest way to do this is to
 check if a todo is passed to the modal.
 
+
+> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## Finishing up
 
