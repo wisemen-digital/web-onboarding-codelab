@@ -101,7 +101,7 @@ To access the designs you need to log in with your Wisemen account:
 Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development
 projects that use the Git revision control system.
 
-All your future projects will be hosted on BitBucket.
+Some of our older projects will be hosted on BitBucket.
 
 [Wisemen BitBucket](https://bitbucket.org/product)
 
@@ -110,6 +110,19 @@ If you are not yet familiar with Bitbucket and/or Git, Here is great article to 
 
 We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
 In the article above you can find a section about pull requests to get you started!
+
+### GitHub
+
+GitHub is another web-based version control repository hosting service owned by Microsoft, for source code and development
+projects that use the Git revision control system.
+
+Just like BitBucket, some of our projects will be hosted on GitHub. **_GitHub will be used for new projects_**.
+
+If you are not yet familiar with GitHub, Here is great article to get you started:
+[GitHub Git tutorial](https://docs.github.com/en/get-started/start-your-journey/hello-world)
+
+Same as with BitBucket, we expect you to make pull request of your work so your buddy can review your code and keep
+track of your progress.
 
 ### Jira access
 
@@ -131,11 +144,15 @@ The Jira contains all the requirements for creating the to-do app.
 You will be creating a simple to-do app. The app can be used to create, edit and delete to-do's.
 The backend is already created and you can find the documentation here:
 
-[Backend documentation](https://bitbucket.org/wisemen/wisemen-onboarding-backend/src/master/)
+[Backend documentation](https://onboarding-todo-api.development.appwi.se/api/v1/docs/)
+
+Username: `appwise`  
+Password: `password`
 
 ### Requirements
 
-- Login with your Wisemen gmail account
+- Make a Login page with a authentication system
+- Login by using your Wisemen gmail account
 - View your to-do's in a list
 - Create a new to-do
 - Edit a to-do
@@ -144,13 +161,17 @@ The backend is already created and you can find the documentation here:
 
 ### Designs
 
-Insert designs here
+The designs for the to-do app can be found in Figma. Login with your Wisemen google account to view the designs.
+You can find the designs here:
+
+[Figma designs](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?type=design&node-id=467-4945&mode=design&t=c2mb4igTcdZQaH6X-4)
 
 ## Project setup
 
 <img width="300" src="img/projectSetup/cat_i_am_ready.gif">
 
-### 1. Generate a new Vue3 project
+
+### 1. A Vue3 project
 
 > We use the latest version of Vue for this project. Vue3 is the latest version and has some new features and
 > improvements over Vue2. You can read more about Vue3 here: [Vue3 website]('https://v3.vuejs.org/')
@@ -305,6 +326,10 @@ For this project we will be using a 'split-by-type' folder structure. This is re
 
 You can read more about it here: [Folder structure](https://thefrontendbible.com/project-structure)
 
+### Assets
+
+Assets are files that are used throughout your application. This can be images, fonts, icons, etc.
+
 ### Components
 
 Components are the building blocks of Vue.js applications.
@@ -312,32 +337,111 @@ They are self-contained pieces of code that can be reused throughout your applic
 
 You can read more about it here: [Components](https://thefrontendbible.com/components)
 
-### Views
+### Composable
 
-Views are the pages of your application. They are the components that are rendered when a specific route is visited.
+Composable look like a util function, but the main difference is that they can contain state and leverage the
+reactivity of Vue.js.
 
-You can read more about it here: [Views](https://v3.vuejs.org/guide/routing.html#basic-routes)
+You can read more about it here: [Composables](https://thefrontendbible.com/reusable-code/composables)
 
-### Router
+### Configs
 
-The router is the core of Vue.js applications. It is used to navigate between different views.
+Configs are used to store configuration values for plugins/packages that are used throughout your application. 
+
+### Constants
+
+Constants are used to store hardcoded values that are used throughout your application.
+
+### Icons
+
+Icons are used to store the icons that are used throughout your application.
+
+### Libs
+
+Libs are used to store the libraries that are used throughout your application.
+
+### Middlewares
+
+Middlewares acts like a bridge between the backend and the frontend. They are used to transform the data that is
+received from the backend or route protection.
+
+### Models
+
+Models are used to store the types and interfaces that are used throughout your application.
+
+### Modules
+
+Modules are collections of components, views, stores, services, etc. that are used to create a specific feature of your
+application. Here is a list of some important folders inside the modules folder:
+
+- Api: This folder is used to store the queries, mutations and services that are used to fetch and update data from the backend.
+- Constants: This folder is used to store the constants that are used throughout the module.
+- Components: This folder is used to store the components that are used throughout the module.
+- features: This folder is used to store the features that are used throughout the module.
+- routes: This folder is used to store the routes that are used throughout the module.
+- stores: This folder is used to store the stores that are used throughout the module.
+
+### Plugins
+
+Plugins are used to add functionality to your Vue.js application. They can be used to add third-party libraries, add
+global components, etc.
+
+### Routes
+
+The routes is the core of Vue.js applications. It is used to navigate between different views.
 
 You can read more about it here:
 
 - [Best practices](https://thefrontendbible.com/reusable-code/router)
-- [Router](https://v3.vuejs.org/guide/routing.html#basic-routes)
+- [Routes](https://v3.vuejs.org/guide/routing.html#basic-routes)
 
 ### Stores
 
 Stores are used to store the state of your application. This is useful when you want to share data between different
-components.
+components. This folder is only for global stores, if you have a store that is only used in a specific component, you
+should store it inside the component folder. only global stores should be located in this folder.
 
 You can read more about it here:
 
 - [Best practices](https://thefrontendbible.com/reusable-code/stores)
 - [Pinia](https://pinia.esm.dev/)
 
-### Services & Http
+### Transformers
+
+Transformers are used to transform the data that is received from the backend. This is useful when you want to transform
+the data into a format that is easier to work with. This should be a single file per module.
+
+### Transitions
+
+Transitions are used to add animations to your application. This is useful when you want to add a smooth transition
+between different views or components.
+
+### Utils
+
+Utils are reusable pieces of code that can be throughout your application.
+They contain no state and are not tied to a specific component.
+
+You can read more about it here: [Utils](https://thefrontendbible.com/reusable-code/utils)
+
+### Views
+
+Views are the pages of your application. They are the components that are rendered when a specific route is visited.
+
+You can read more about it here: [Views](https://v3.vuejs.org/guide/routing.html#basic-routes)
+
+### Worth mentioning
+
+#### Queries & Mutations (Tanstack)
+
+
+Queries and mutations are used to fetch and update data from the backend. 
+
+You can read more about it here:
+
+- [Best practices queries](https://thefrontendbible.com/reusable-code/queries)
+- [Best practices mutations](https://thefrontendbible.com/reusable-code/mutations)
+
+#### Services & Http
 
 Services are used to fetch data from the backend. These backend calls are made using the Http client.
 
@@ -345,36 +449,14 @@ You can read more about it here:
 
 - [Best practices](https://thefrontendbible.com/reusable-code/services)
 
-### Composables & Utils
-
-#### Utils
-
-Utils are reusable pieces of code that can be throughout your application.
-They contain no state and are not tied to a specific component.
-
-You can read more about it here: [Utils](https://thefrontendbible.com/reusable-code/utils)
-
-#### Composables
-
-Composables look like a util function, but the main difference is that they can contain state and leverage the
-reactivity of Vue.js.
-
-You can read more about it here: [Composables](https://thefrontendbible.com/reusable-code/composables)
-
-### Assets
-
-Assets are files that are used throughout your application. This can be images, fonts, icons, etc.
-
-You can read more about it here: [Assets](https://thefrontendbible.com/assets)
-
-### Locales
+#### Locales
 
 Locales are used to store the translations of your application. This is useful when you want to support multiple
 languages.
 
 You can read more about it here: [Locales](https://thefrontendbible.com/locales)
 
-### Types & Interfaces
+#### Types & Interfaces
 
 At Wisemen we use Typescript to type all of our code.
 This is useful when you want to make sure that your code is correct and leverage the power of intellisense.
@@ -382,13 +464,13 @@ It will also help you to avoid bugs, improve your code quality and make your cod
 
 Lastly, your team will be able to understand your code better and don't have to make assumptions about the code.
 
-You can read more about it here: [Types & Interfaces](https://thefrontendbible.com/types)
+Consult the front-end bible to find out more about types and interfaces. [For example](https://thefrontendbible.com/components/props#typescript-constructor)
 
 ## PROJECT: Overview
 
 Now that we have a basic understanding of the project structure
 and the different kinds of elements that a frontend should contain,
-let's get started with building the acutal application.
+let's get started with building the actual application.
 
 Before we can create, update and delete todo's, we need to be able to login to the application.
 There are several components that we need to create before we can start with the authentication flow.
