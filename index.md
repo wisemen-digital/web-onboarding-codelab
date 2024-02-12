@@ -125,8 +125,7 @@ For this onboarding you will be working with Jira to track your progress. You ca
 [Jira Todo]()
 
 Jira is used to track the progress of your project and manage the tasks that need to be done.
-All the requirements for the to-do app are in the Jira. You will be creating tasks in the Jira to keep track of your
-progress. (weet niet of ze zelf ticketjes hiervoor moeten maken of we ze dat geven?)
+All the requirements for the to-do app are in the Jira. You will be creating tasks in the Jira to keep track of your progress.
 
 The Jira contains all the requirements for creating the to-do app.
 
