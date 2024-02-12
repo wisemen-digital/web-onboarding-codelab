@@ -589,7 +589,7 @@ export const authService: AuthService = {
 }
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Router
 
@@ -642,7 +642,7 @@ router.beforeEach(async (to, from, next) => {
 })
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Auth store
 
@@ -664,12 +664,11 @@ That's why we will always use a store to do our backend calls and never directly
 > aside positive 
 > **LIFE PRO TIP**: You can use the [useLocalStorage](https://vueuse.org/core/useStorage/) composable from VueUse to store the user information directly in the local storage.
 
-#### Code snippet
-This is an example of how the auth store could look like.
 
 ```typescript
 export const useAuthStore = defineStore('auth', () => {
 	const currentUser = ref<CurrentUser | null>(null)
+    const accessToken = useLocalStorage<string | null>(null)
 
 	const isAuthenticated = computed<boolean>(() => currentUser.value === null)
 
@@ -687,7 +686,8 @@ export const useAuthStore = defineStore('auth', () => {
 	}
 
 	async function login(data: { email: string; password: string }): Promise<void> {
-		await authService.login(data.username, data.password)
+		const response = await authService.login(data.username, data.password)
+        accessToken.value = response.accessToken
 	}
 
 	function logout(): void {
@@ -729,11 +729,14 @@ navigate to the `TodoView` after a successful login.
 - Create a new `authStore` and `router` instance.
 - Use the `router` to navigate to the `TodoOverviewView.vue` view after successfully logging in.
 
-#### Code snippet
-This is an example of how the `AuthLoginView.vue` could look like.
 ```vue
 <script setup lang="ts">
-//handle the login and navigate to the TodoView after a successful login
+const authStore = useAuthStore()
+  
+function handleLogin(data: { username: string; password: string }): void {
+  authStore.login(data)
+  router.push({ name: 'todos' })
+}
 </script>
 
 <template>
@@ -860,7 +863,7 @@ const { data: todos, isLoading } = useTodoIndexQuery()
 </template>
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Creating Todo's
 
@@ -885,12 +888,16 @@ export const formSchema = z.object({
 export type TodoForm = z.infer<typeof formSchema>
 ```
 
+> aside positive
+> We use the `zod` library to create a form schema. This library is used to validate and transform data.
+> You can read more about it here: [Zod](https://zod.dev/)
+
 ### Service
 After creating the model that we want to add a new function to our existing service that will be used to create a new todo.
 
 ```typescript
 interface TodoService {
-  getAll: () => Promise<Todo[]>
+  ...
   create: (form: TodoForm) => Promise<void>
 }
 
@@ -929,7 +936,7 @@ Once we have created the mutation, we can start with creating a modal component 
 - Add a submit button that will call the `useTodoCreateMutation` mutation.
 
 > aside positive
-> For more info about validation you can check out our [Formango](https://github.com/wisemen-digital/vue-formango) library.
+> For more info about form validation you can check out our [Formango](https://github.com/wisemen-digital/vue-formango) library.
 
 ```vue
 <script setup lang="ts">
@@ -972,20 +979,20 @@ To finish up, we are going to update our `TodoOverviewView` by adding a button t
 ```vue
 <script setup lang="ts">
 ...
-
-const isModalOpen = ref<boolean>(false)
+const isModalOpen = ref<boolean>(false) 
+...
 </script>
 
 <template>
 <AppPage>
     <TodoList :todos="todos" :is-loading="isLoading" />
-    <button @click="isModalOpen = true">Create todo</button>
-    <TodoModal v-if="isModalOpen" @close="isModalOpen = false" />
+    <button @click="onCreateButtonClick">Create todo</button>
+    <TodoModal v-if="isModalOpen" @close="handleClose" />
 </AppPage>
 </template>
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Updating and deleting todo's
 
@@ -999,13 +1006,11 @@ Now it's time to add a new function to our existing service that will be used to
 
 ```typescript
 interface TodoService {
-  ...
   update: (uuid: TodoUuid, form: TodoForm) => Promise<void>
   deleteByUuid: (uuid: TodoUuid) => Promise<void>
 }
 
 export const todoService: TodoService = {
-  ...
   update: async (uuid: TodoUuid, form: TodoForm): Promise<void> => {
     await httpClient.put(`/todos/${uuid}`, form)
   },
@@ -1087,10 +1092,10 @@ function handleDelete(uuid: TodoUuid): void {
 </template>
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## Finishing up
 
-Congratulations! You have successfully completed the Vue.js workshop.
+Congratulations! You have successfully completed our Vue.js workshop.
 Make sure that your project has been pushed to your repository and that you have created a pull request.
 Fix any remarks that you have received from your mentor and wait for the final feedback.
