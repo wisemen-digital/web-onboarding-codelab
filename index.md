@@ -70,12 +70,9 @@ Node.js is necessary to run the Vue project. You can download it from the websit
   Node.js when you install it from its website.
 
 * [PNPM](https://pnpm.io/installation)
-  PNPM is a fast, disk space efficient package manager. It is designed to be installed globally, and it installs all the
-  packages that you need in your project in a single place, using symlinks.
+  PNPM is a fast, disk space efficient package manager. It is designed to be installed globally, and it installs all the packages that you need in your project in a single place, using symlinks.
 
-The difference between NPM and PNPM is that PNPM uses symlinks to link packages to your project. This means that if you
-have multiple projects that use the same package, it will only be installed once on your computer. This saves a lot of
-disk space.
+The difference between NPM and PNPM is that PNPM uses symlinks to link packages to your project. This means that if you have multiple projects that use the same package, it will only be installed once on your computer. This saves a lot of disk space.
 PNPM is also faster than NPM because it uses symlinks.
 
 ### Figma
