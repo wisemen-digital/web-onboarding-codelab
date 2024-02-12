@@ -15,12 +15,10 @@ Welcome to the frontend onboarding! In this onboarding you will learn how develo
 You will learn how to work with Vue, Vite, Tailwind, Figma, BitBucket and Jira.
 
 This onboarding is designed to be completed in roughly 3-4 days.
-This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster
-than people with less experience.
+This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster than people with less experience.
 
 You will be working on a small to-do app.
-This app will be used to learn the same way we, as front-end developers work at Wisemen. You will be working with the
-tools we use at Wisemen and you will be working with the same workflow.
+This app will be used to learn the same way we, as front-end developers work at Wisemen. You will be working with the tools we use at Wisemen and you will be working with the same workflow.
 
 We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
 The way we do this will be explained in the onboarding.
