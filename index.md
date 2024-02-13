@@ -556,7 +556,6 @@ const httpClient: AxiosInstance = axios.create({
 - Use the `httpClient` to make a `POST` request to the `/login` endpoint.
 
 ```typescript
-
 interface AuthService {
   login: (username: string, password: string) => Promise<void>
   getCurrentUser: () => Promise<CurrentUser>
@@ -579,12 +578,8 @@ export const authService: AuthService = {
     return response.data
   },
   getCurrentUser: async (): Promise<CurrentUser> => {
-    const data = await httpClient.get({
-      url: '/users/me',
-      responseSchema: currentUserResponseDto,
-    })
-
-    return mapCurrentUserResponseDtoToCurrentUser(data)
+    const response = await httpClient.get('/users/me')
+    return response.data
   },
 }
 ```
