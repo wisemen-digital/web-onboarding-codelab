@@ -13,18 +13,17 @@ feedback link: https://github.com/SolaceDev/solace-dev-codelabs/blob/master/mark
 
 #### First of all, welcome to **Wisemen!** We are happy to have you here and we hope you will have a great time working with us.
 
+<img width="200" src="img/projectSetup/Wisemen_Logo_Acid.png">
 
-  <img width="200" src="img/projectSetup/Wisemen_Logo_Acid.png">
-
-
-Welcome to the frontend onboarding! In this onboarding you will learn how frontend development happens at Wisemen.
+In this onboarding you will learn how frontend development happens at Wisemen.
 You will learn how to work with Vue, Vite, Tailwind, Figma, Github, Jira and more.
 
 This onboarding is designed to be completed in roughly 3-4 days.
-This does not mean you have to complete it in 3-4 days. People with more experience will be able to complete it faster than people with less experience.
+This does not mean you have to complete it in 3-4 days. 
+People with more experience will be able to complete it faster than people with less experience.
 
-You will be working on a small to-do app.
-This app will be used to learn the same way we, as front-end developers work at Wisemen. You will be working with the tools we use at Wisemen and you will be working with the same workflow.
+In this codelab we are going to create a simple to-do app.
+This app will be used as example to teach you how we structure our projects, which tools and libraries we use and how we work with them.
 
 > aside positive
 > One important thing to know is that you will be creating most stuff from scratch in this codelab.
@@ -131,7 +130,7 @@ To access the designs you need to log in with your Wisemen account:
 Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development
 projects that use the Git revision control system.
 
-Some of our older projects will be hosted on BitBucket.
+Some of our older projects are still hosted on BitBucket.
 
 [Wisemen BitBucket](https://bitbucket.org/product)
 
@@ -195,7 +194,6 @@ You can find the designs here:
 ## Project setup
 
 <img width="300" src="img/projectSetup/cat_i_am_ready.gif">
-
 
 ### 1. A Vue3 project
 
@@ -271,15 +269,17 @@ ESLint is a tool for identifying and reporting on patterns found in ECMAScript/J
 making code more consistent and avoiding bugs. Is helps a lot with code formatting and makes it easier to write code.
 Also in team projects it helps to keep the code consistent.
 
-👉 __Please make sure you use the Wisemen ESLint config file, read more
-here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-config)__
+> aside positive
+> Please make sure you use the Wisemen ESLint config file,
+> read more here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-config)
 
 <img width="120" src="img/projectSetup/vue_i18n_logo.svg">
 
-### 6. i18n
+### 6. Internationalization (i18n)
 
 i18n is a short name for internationalization. It is a process of designing and developing a software application so
 that it can be adapted to various languages and regions without engineering changes.
+
 Within the company we use [Vue i18n](https://vue-i18n.intlify.dev/) to translate our applications.
 It's important to understand the power of this tool since it will save you a lot of time when creating multilingual applications.
 
@@ -303,9 +303,9 @@ It's important to know that we cannot use Google fonts CDN in our projects. This
 our clients.
 We have alternative ways of using Google fonts in our projects.
 
-👉 __Please read more
-here: [Afstappen van Google Fonts en CDN javascript](https://appwise.atlassian.net/wiki/spaces/FRONT/pages/631734284/Afstappen+van+Google+Fonts+en+CDN+javascript).
-If you have any questions about this, please contact your team lead.__
+> aside negative 
+> Please read more here: [Afstappen van Google Fonts en CDN javascript](https://appwise.atlassian.net/wiki/spaces/FRONT/pages/631734284/Afstappen+van+Google+Fonts+en+CDN+javascript). 
+> If you have any questions about this, please contact your team lead.
 
 ### 9. @ Alias for src folder
 
@@ -538,7 +538,6 @@ That's why we will start with creating a service that will be used to send the l
 - Create a new instance of axios and export it.
 - Add an interceptor that will be used to add the `Authorization` header to all requests.
 
-#### Code snippet
 ```typescript
 const httpClient: AxiosInstance = axios.create({
   baseURL: 'ENTER_YOUR_BASE_URL_HERE',
@@ -574,6 +573,7 @@ export const authService: AuthService = {
     const config = {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     }
+    
     const response = await httpClient.post('/auth/token', formData, config)
     return response.data
   },
@@ -586,7 +586,6 @@ export const authService: AuthService = {
 
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
-
 ## PROJECT: Auth store
 
 ### Creating the auth store
@@ -595,16 +594,14 @@ The store will help us to save the tokens after a successful login.
 That's why we will always use a store to do our backend calls and never directly use the service in the component. (separation of concerns)
 
 - Create a new file called `auth.store.ts` in the `src/modules/auth/stores` folder.
-- Import the `auth.service.ts` file.
 - Create a new store using the `defineStore` function from `pinia`.
-- Add a `accessToken` and `refreshToken` property to the store.
+- Add a `accessToken` property to the store.
 - Add a `login` function to the store that takes a `username` and `password` as parameters.
-- Use the `auth.service` to make a `POST` request to the `/login` endpoint.
-- Save the `accessToken` and `refreshToken` in the store after a successful login.
+- Use the `AuthService` to make a `POST` request to the `/login` endpoint.
+- Save the `accessToken` in the store after a successful login.
 
 > aside positive
 > **LIFE PRO TIP**: You can use the [useLocalStorage](https://vueuse.org/core/useStorage/) composable from VueUse to store the user information directly in the local storage.
-
 
 ```typescript
 export const useAuthStore = defineStore('auth', () => {
@@ -647,7 +644,7 @@ export const useAuthStore = defineStore('auth', () => {
 })
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Router
 
@@ -693,11 +690,11 @@ const router = createRouter({
 - If the user is logged in, continue to the `todos` route.
 
 > aside positive
-> TIP: You can use the `useAuthStore` to check if the user is logged in. If the user is not logged in, you can use the `router` to navigate to the `login` route.
+> **LIFE PRO TIP**: You can use the `useAuthStore` to check if the user is logged in. If the user is not logged in, you can use the `router` to navigate to the `login` route.
 > If the user is logged in, you can use the `router` to navigate to the `todos` route.
 
 > aside positive
-> TIP: You can add meta fields to your routes to check if the user is allowed to access a specific route.
+> **LIFE PRO TIP**: You can add meta fields to your routes to check if the user is allowed to access a specific route.
 
 ```typescript
 router.beforeEach(async (to, from, next) => {
@@ -747,7 +744,7 @@ function handleLogin(data: { username: string; password: string }): void {
 </template>
 ```
 
-> 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Displaying todo's
 
@@ -810,7 +807,7 @@ export function useTodoIndexQuery() {
 ```
 
 > aside positive
-> If you're not sure how to use `useQuery`, you can take a look at the [Vue Query documentation](https://tanstack.com/query/v4/docs/vue/guides/queries).
+> **LIFE PRO TIP**: If you're not sure how to use `useQuery`, you can take a look at the [Vue Query documentation](https://tanstack.com/query/v4/docs/vue/guides/queries).
 
 
 ### List component
