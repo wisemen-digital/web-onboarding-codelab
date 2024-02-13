@@ -586,66 +586,12 @@ export const authService: AuthService = {
 
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
-## PROJECT: Router
-
-The router is the core of Vue.js applications. It is used to navigate between different views.
-It is also used to handle authentication and permissions for specific routes using "guards".
-This is useful when you want to protect a route from being accessed by unauthenticated users.
-
-### Creating the router
-
-- Create a new file `router.ts` in the `src/router` folder.
-- Implement a router using the `createRouter` function from `vue-router`.
-- Create empty components called `LoginView.vue` and `TodoView.vue` in the `src/views` folder.
-- Add a `login` and `todos` route to the router that lazy loads the `LoginView` and `TodoView` components.
-
-```typescript
-const routes: RouteRecordRaw[] = [
-  ...AuthenticationRoutes,
-  {
-    path: '/',
-    name: 'index',
-    meta: { requiresAuth: true },
-    children: [
-      // Add your routes here
-    ],
-  },
-  {
-    name: 'error',
-    path: '/:pathMatch(.*)*',
-    component: async () => import('@/views/ErrorNotFoundView.vue'),
-  },
-]
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes: routes
-})
-```
-
-### Router guards
-
-- Add a `beforeEnter` guard to the `todos` route that checks if the user is logged in.
-- If the user is not logged in, redirect the user to the `login` route.
-- If the user is logged in, continue to the `todos` route.
-
-```typescript
-router.beforeEach(async (to, from, next) => {
-  // Add your guards here
-  
-  next()
-})
-```
-
-💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Auth store
 
 ### Creating the auth store
 
 The store will help us to save the tokens after a successful login.
-Another reason to use a store is to manage your loading state.
-This will help us to show a loading indicator when the user is logging in.
 That's why we will always use a store to do our backend calls and never directly use the service in the component. (separation of concerns)
 
 - Create a new file called `auth.store.ts` in the `src/modules/auth/stores` folder.
@@ -656,7 +602,7 @@ That's why we will always use a store to do our backend calls and never directly
 - Use the `auth.service` to make a `POST` request to the `/login` endpoint.
 - Save the `accessToken` and `refreshToken` in the store after a successful login.
 
-> aside positive 
+> aside positive
 > **LIFE PRO TIP**: You can use the [useLocalStorage](https://vueuse.org/core/useStorage/) composable from VueUse to store the user information directly in the local storage.
 
 
@@ -702,6 +648,66 @@ export const useAuthStore = defineStore('auth', () => {
 ```
 
 > 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
+## PROJECT: Router
+
+The router is the core of Vue.js applications. It is used to navigate between different views.
+It is also used to handle authentication and permissions for specific routes using "guards".
+This is useful when you want to protect a route from being accessed by unauthenticated users.
+
+### Creating the router
+
+- Create a new file `router.ts` in the `src/router` folder.
+- Implement a router using the `createRouter` function from `vue-router`.
+- Create empty components called `LoginView.vue` and `TodoView.vue` in the `src/views` folder.
+- Add a `login` and `todos` route to the router that lazy loads the `LoginView` and `TodoView` components.
+
+```typescript
+const routes: RouteRecordRaw[] = [
+  ...AuthenticationRoutes,
+  {
+    path: '/',
+    name: 'index',
+    meta: { requiresAuth: true },
+    children: [
+      // Add your routes here
+    ],
+  },
+  {
+    name: 'error',
+    path: '/:pathMatch(.*)*',
+    component: async () => import('@/views/ErrorNotFoundView.vue'),
+  },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: routes
+})
+```
+
+### Router guards
+
+- Add a `beforeEach` guard to your router that checks if the user is logged in.
+- If the user is not logged in, redirect the user to the `login` route.
+- If the user is logged in, continue to the `todos` route.
+
+> aside positive
+> TIP: You can use the `useAuthStore` to check if the user is logged in. If the user is not logged in, you can use the `router` to navigate to the `login` route.
+> If the user is logged in, you can use the `router` to navigate to the `todos` route.
+
+> aside positive
+> TIP: You can add meta fields to your routes to check if the user is allowed to access a specific route.
+
+```typescript
+router.beforeEach(async (to, from, next) => {
+  // Add your guards here
+  
+  next()
+})
+```
+
+💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Login view
 
