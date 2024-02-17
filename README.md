@@ -13,3 +13,5 @@ If you makes changes, the project will be recompiled. You can see the changes in
 ```bash
 npm run serve
 ```
+
+Link: https://wisemen-onboarding-frontend.netlify.app/#0
