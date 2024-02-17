@@ -23,13 +23,13 @@ This does not mean you have to complete it in 3-4 days.
 People with more experience will be able to complete it faster than people with less experience.
 
 In this codelab we are going to create a simple to-do app.
-This app will be used as example to teach you how we structure our projects, which tools and libraries we use and how we work with them.
+This app will be used as example to teach you how we structure our projects, which tools and libraries we use.
 
 > aside positive
 > One important thing to know is that you will be creating most stuff from scratch in this codelab.
 > This is to make sure you understand how everything works and how the pieces are connected behind the scenes.
 > When we create projects for our customers we always start from our [project template](https://github.com/wisemen-digital/project-template-vue).
-> The project template contains pre-built features, components, views, tools and configurations so that we can get started quickly and don't have to reinvent the wheel every time we start a new project.
+> The project template contains pre-built features, components, tools and configurations so that we can get started quickly and don't have to reinvent the wheel every time we start a new project.
 
 We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
 The way we do this will be explained in the onboarding.
@@ -108,6 +108,9 @@ Node.js is necessary to run the Vue project. You can download it from the websit
 The difference between NPM and PNPM is that PNPM uses symlinks to link packages to your project. 
 This means that if you have multiple projects that use the same package, it will only be installed once on your computer. 
 This saves a lot of disk space. PNPM is also faster than NPM because it uses symlinks.
+
+> aside positive
+> We use PNPM in our projects.
 
 ### Figma
 
@@ -231,10 +234,10 @@ Plugins can be configured in the `vite.config.js` file.
 
 ### 3. Package.json
 
-The package.json file is used to give information to npm that allows it to identify the project as well as handle the
-project's dependencies. npm can install the packages you specify in your package.json file.
+The package.json file is used to give information to pnpm that allows it to identify the project as well as handle the
+project's dependencies. pnpm can install the packages you specify in your package.json file.
 The main use of the package.json file is to list the packages that your project depends on and to ensure that your
-colleagues get the same packages when they do `npm install`.
+colleagues get the same packages when they do `pnpm install`.
 
 #### 3.1 Scripts
 
@@ -270,8 +273,8 @@ making code more consistent and avoiding bugs. Is helps a lot with code formatti
 Also in team projects it helps to keep the code consistent.
 
 > aside positive
-> Please make sure you use the Wisemen ESLint config file,
-> read more here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-config)
+> Please make sure you use the Wisemen ESLint config file in your project, 
+> you can read how to configure it here: [The Frontend bible ESLint config](https://thefrontendbible.com/eslint-config)
 
 <img width="120" src="img/projectSetup/vue_i18n_logo.svg">
 
@@ -505,20 +508,20 @@ Now that we have a basic understanding of the project structure
 and the different kinds of elements that a frontend should contain,
 let's get started with building the actual application.
 
-1. Before we can create, update and delete todo's, we need to be able to login to the application.
+- Before we can create, update and delete todo's, we need to be able to login to the application.
 There are several components that we need to create before we can start with the authentication flow. 
-2. We will need to create a view that contains a login form. This form will be used to send the login credentials to the
-backend. 
-3. We will also need to create a service that will be used to send the login request to the backend. 
-4. Lastly, we will need to create a store that will be used to store the user information.
-After we have created these components, we can start with the authentication flow. 
-5. Once the user is logged in, we will need to create a view that contains a list of todo's. 
-6. This list will be fetched from the backend and displayed in a list view. 
-7. We will also need to create a service that will be used to fetch the todo's from the backend and a store that will be
-used to store the todo's. 
-8. After we have created these components, we can start with creating todo's. 
-9. We will need to create a view that contains a form that can be used to create a new todo. 
-10. We will also need to create a service that will be used to send the todo to the backend.
+- We will need to create a view that contains a login form. This form will be used to send the login credentials to the
+backend.
+- We will also need to create a service that will be used to send the login request to the backend. 
+- To complete the login flow we will need to create a store that will be used to store the user information when the user is logged in.
+- Once the user is logged in, we will need to create a view that contains a list of todo's. 
+- This list will be fetched from the backend using queries and displayed in a list view. 
+- Once we can display the todos, we will need to create a modal that contains a form that can be used to create a new todo. 
+- Here you will learn about mutations and how to use them to update data in the backend and invalidate your queries.
+- After completing our create form, we will need to update it so that we can edit them.
+- Once we can create and edit them, we will need to add a button to delete them.
+- After we have completed these tasks, we will need to add a button to the list view that can be used to mark a todo as done.
+- To finish the project, we will need to add a logout button to log out the user.
 
 ## PROJECT: Http client
 
@@ -531,6 +534,19 @@ maintain in the future.
 
 That's why we will start with creating a service that will be used to send the login request to the backend.
 
+### Environment variables
+To make sure that we don't hardcode the base url of the backend in our service, we will use environment variables.
+
+- Create a new file called `.env` in the root of your project.
+- Add a new variable called `VITE_BASE_URL` and set it to the base url of the backend.
+- Do the same for the `VITE_CLIENT_ID` and `VITE_CLIENT_SECRET` variables.
+
+```env
+VITE_BASE_URL=https://onboarding-todo-api.development.appwi.se/api/v1
+VITE_CLIENT_ID=ENTER_YOUR_CLIENT_ID_HERE
+VITE_CLIENT_SECRET=ENTER_YOUR_CLIENT
+```
+
 ### Creating the HTTP client
 
 - Add the `axios` package to the project.
@@ -540,7 +556,7 @@ That's why we will start with creating a service that will be used to send the l
 
 ```typescript
 const httpClient: AxiosInstance = axios.create({
-  baseURL: 'ENTER_YOUR_BASE_URL_HERE',
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json;charset=UTF-8',
@@ -661,13 +677,20 @@ This is useful when you want to protect a route from being accessed by unauthent
 
 ```typescript
 const routes: RouteRecordRaw[] = [
-  ...AuthenticationRoutes,
+  {
+    path: '/login',
+    name: 'login',
+    component: async () => import('@/modules/auth/views/AuthLoginView.vue'),
+  },
   {
     path: '/',
     name: 'index',
     meta: { requiresAuth: true },
     children: [
-      // Add your routes here
+      {
+        path: '/todos',
+        name: 'todos',
+      },
     ],
   },
   {
@@ -731,16 +754,16 @@ navigate to the `TodoView` after a successful login.
 <script setup lang="ts">
 const authStore = useAuthStore()
   
-function handleLogin(data: { username: string; password: string }): void {
-  authStore.login(data)
+async function handleLogin(data: { username: string; password: string }): Promise<void> {
+  await authStore.login(data)
   router.push({ name: 'todos' })
 }
 </script>
 
 <template>
-<AppPage>
+<div>
     <AuthLoginForm @submit="handleLogin" />
-</AppPage>
+</div>
 </template>
 ```
 
@@ -809,7 +832,6 @@ export function useTodoIndexQuery() {
 > aside positive
 > **LIFE PRO TIP**: If you're not sure how to use `useQuery`, you can take a look at the [Vue Query documentation](https://tanstack.com/query/v4/docs/vue/guides/queries).
 
-
 ### List component
 Once we have created the query, we can start with creating a list component that will be used to display the todo's.
 
@@ -855,9 +877,9 @@ const { data: todos, isLoading } = useTodoIndexQuery()
 </script>
 
 <template>
-<AppPage>
+<div>
     <TodoList :todos="todos" :is-loading="isLoading" />
-</AppPage>
+</div>
 </template>
 ```
 
@@ -875,9 +897,9 @@ for creating a new todo.
 ### Form model
 We are going to start by creating a file called `todoForm.model.ts` in the `src/modules/todos/models` folder.
 
-This file will contain an form schema that will be used to create a new todo
+This file will contain a form schema that will be used to create a new todo
 ```typescript
-export const formSchema = z.object({
+export const todoFormSchema = z.object({
   title: z.string(),
   description: z.string(),
   deadline: z.string(),
@@ -887,7 +909,7 @@ export type TodoForm = z.infer<typeof formSchema>
 ```
 
 > aside positive
-> We use the `zod` library to create a form schema. This library is used to validate and transform data.
+> We use the `zod` library to create our form schemas. This library is used to validate and transform data.
 > You can read more about it here: [Zod](https://zod.dev/)
 
 ### Service
@@ -914,10 +936,14 @@ This mutation will be used to call the `create` function from our service and cr
 
 ```typescript
 export function useTodoCreateMutation() {
+  const queryClient = useQueryClient()
   return useMutation({
     mutationKey: 'createTodo',
     mutationFn: async (form: TodoForm) => {
       await todoService.create(form)
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries('todos')
     },
   })
 }
@@ -938,11 +964,12 @@ Once we have created the mutation, we can start with creating a modal component 
 
 ```vue
 <script setup lang="ts">
-const { mutate } = useTodoCreateMutation()
+import { useForm } from 'formango' 
+const todoCreateMutation = useTodoCreateMutation()
 
 const { onSubmitForm, form } = useForm({
   schema: todoFormSchema,
-  defaultValues: {
+  initialState: {
     title: '',
     description: '',
     deadline: '',
@@ -950,11 +977,14 @@ const { onSubmitForm, form } = useForm({
 })
 
 const title = form.register('title')
-...
 
-onSubmitForm(async (formData: TodoForm) => {
+function onSubmit(): void {
+  form.submit()
+}
+
+onSubmitForm(async (formData: TodoCreateForm) => {
   try {
-    await mutate(formData)
+    await todoCreateMutation.mutateAsync(formData) // notice the async keyword here, it's very important
   } catch (error) {
     console.error(error)
   }
@@ -962,13 +992,10 @@ onSubmitForm(async (formData: TodoForm) => {
 </script>
 
 <template>
-<AppModal>
-    <form @submit="onSubmit(handleSubmit)">
-        <input v-model="title.value" />
-        ...
-        <button type="submit">Submit</button>
-    </form>
-</AppModal>
+<form @submit.prevent="onSubmit">
+    <input v-model="title.value" />
+    <button type="submit">Submit</button>
+</form>
 ```
 
 ### View
@@ -982,11 +1009,11 @@ const isModalOpen = ref<boolean>(false)
 </script>
 
 <template>
-<AppPage>
+<div>
     <TodoList :todos="todos" :is-loading="isLoading" />
     <button @click="onCreateButtonClick">Create todo</button>
     <TodoModal v-if="isModalOpen" @close="handleClose" />
-</AppPage>
+</div>
 </template>
 ```
 
@@ -1023,10 +1050,15 @@ Once we have added the `update` and `deleteByUuid` functions to our service, we 
 
 ```typescript
 export function useTodoUpdateMutation() {
+  const queryClient = useQueryClient()
+  
   return useMutation({
     mutationKey: 'updateTodo',
     mutationFn: async (uuid: TodoUuid, form: TodoForm) => {
       await todoService.update(uuid, form)
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries('todos')
     },
   })
 }
@@ -1041,31 +1073,36 @@ Now it's time to extend the functionality of the `TodoModal` component to allow 
 
 ```vue
 <script setup lang="ts">
-const { mutate: update } = useTodoUpdateMutation()
-const { mutate: deleteByUuid } = useTodoDeleteMutation()
 
 const props = defineProps<{
-  uuid: TodoUuid | null
+  todo: Todo | null
 }>()
+
+const updateMutation = useTodoUpdateMutation()
+const deleteMutation = useTodoDeleteMutation()
 
 const { onSubmitForm, form } = useForm({
   schema: todoFormSchema,
-  defaultValues: {
-    title: '',
-    description: '',
-    deadline: '',
+  initialValues: {
+    title: props.todo?.title || '',
+    description: props.todo?.description || '',
+    deadline: props.todo?.deadline || '',
   },
 })
 
 const title = form.register('title')
 ...
 
+function onSubmit(): void {
+  form.submit()
+}
+
 onSubmitForm(async (formData: TodoForm) => {
   try {
-    if (props.uuid) {
-      await update(props.uuid, formData)
+    if (props.todo) {
+      await updateMutation.mutateAsync(props.todo.uuid, formData)
     } else {
-      await mutate(formData)
+      await createMutation.mutateAsnyc(formData)
     }
   } catch (error) {
     console.error(error)
@@ -1073,20 +1110,20 @@ onSubmitForm(async (formData: TodoForm) => {
 })
 
 function handleDelete(uuid: TodoUuid): void {
-  deleteByUuid(uuid)
+  deleteMutation.mutateAsync(uuid)
 }
 
 </script>
 
 <template>
-<AppModal>
-    <form @submit="onSubmit(handleSubmit)">
+<div>
+    <form @submit.prevent="onSubmit">
         <input v-model="title.value" />
         ...
         <button type="submit">Submit</button>
     </form>
     <button @click="handleDelete(props.uuid)">Delete</button>
-</AppModal>
+</div>
 </template>
 ```
 
@@ -1094,6 +1131,11 @@ function handleDelete(uuid: TodoUuid): void {
 
 ## Finishing up
 
-Congratulations! You have successfully completed our Vue.js workshop.
+Congratulations! You have successfully completed our Vue.js workshop. 🥳🤩
+
+<img width="600" src="img/the-office-dwight.gif">
+
 Make sure that your project has been pushed to your repository and that you have created a pull request.
 Fix any remarks that you have received from your mentor and wait for the final feedback.
+
+Also make sure your styling is consistent with the designs and adjust where necessary.
