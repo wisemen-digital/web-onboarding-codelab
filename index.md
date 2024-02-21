@@ -128,7 +128,9 @@ You can view all of our designs here:
 To access the designs you need to log in with your Wisemen account: 
 [wireframes](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?node-id=407-4095&t=2qdyy89lKwN7dFw3-0)
 
-### BitBucket repository
+### Source control
+
+#### BitBucket repository
 
 Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development
 projects that use the Git revision control system.
@@ -143,7 +145,7 @@ If you are not yet familiar with Bitbucket and/or Git, Here is great article to 
 We also expect you to make pull request of your work so your buddy can review your code and keep track of your progress.
 In the article above you can find a section about pull requests to get you started!
 
-### GitHub
+#### GitHub
 
 GitHub is another web-based version control repository hosting service owned by Microsoft, for source code and development
 projects that use the Git revision control system.
@@ -155,6 +157,10 @@ If you are not yet familiar with GitHub, Here is great article to get you starte
 
 Same as with BitBucket, we expect you to make pull request of your work so your buddy can review your code and keep
 track of your progress.
+
+> aside positive
+> We switched to GitHub for our new projects. 
+> You can find our GitHub organization here: [Wisemen GitHub](https://github.com/wisemen-digital)
 
 ### Jira access
 
@@ -204,9 +210,17 @@ We use the latest version of Vue for this project. Vue3 is the latest version an
 improvements over Vue2. You can read more about Vue3 here: [Vue3 website]('https://v3.vuejs.org/')
 Make sure you use the CLI version to create the project.
 
----
 
-<img width="120" src="img/projectSetup/vite_logo.png">
+Create new project using the Vue CLI:
+```shell
+pnpm create vue@latest
+```
+
+Use the following settings:
+
+<img width="1000" src="img/vue-cli-config.png">
+
+---
 
 ### 2. Vite
 
