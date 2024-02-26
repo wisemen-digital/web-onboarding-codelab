@@ -537,6 +537,10 @@ backend.
 - After we have completed these tasks, we will need to add a button to the list view that can be used to mark a todo as done.
 - To finish the project, we will need to add a logout button to log out the user.
 
+> aside negative
+> The snippets provided in the codelab are examples to help you get started and move you in the right direction. 
+> It's your own responsibility to make sure that the code is correct and that it works as expected.
+
 ## PROJECT: Http client
 
 The most important aspect of programming is **separation of concerns.** and **DRY** (Don't Repeat Yourself).
@@ -614,6 +618,9 @@ export const authService: AuthService = {
 }
 ```
 
+> aside positive
+> You can find the `client_id` and `client_secret` in the backend documentation.
+
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Auth store
@@ -635,44 +642,47 @@ That's why we will always use a store to do our backend calls and never directly
 
 ```typescript
 export const useAuthStore = defineStore('auth', () => {
-	const currentUser = ref<CurrentUser | null>(null)
-    const accessToken = useLocalStorage<string | null>(null)
-
-	const isAuthenticated = computed<boolean>(() => currentUser.value === null)
-
-	async function getCurrentUser(): Promise<CurrentUser> {
-		if (currentUser.value !== null) {
-			return currentUser.value
-		}
-
-        currentUser.value = authService.getCurrentUser()
-		return currentUser.value!
-	}
-
-	function setCurrentUser(user: CurrentUser | null): void {
-		currentUser.value = user
-	}
-
-	async function login(data: { email: string; password: string }): Promise<void> {
-		const response = await authService.login(data.username, data.password)
-        accessToken.value = response.accessToken
-	}
-
-	function logout(): void {
-		authService.logout()
-		setCurrentUser(null)
-	}
-
-	return {
-		currentUser,
-		isAuthenticated,
-		getCurrentUser,
-		setCurrentUser,
-		login,
-		logout,
-	}
+  const currentUser = ref<User | null>(null)
+  const accessToken = useLocalStorage<string | null>(null)
+  
+  const isAuthenticated = computed<boolean>(() => currentUser.value === null)
+  
+  async function getCurrentUser(): Promise<User> {
+    if (currentUser.value !== null) {
+      return currentUser.value
+    }
+    
+    currentUser.value = authService.getCurrentUser()
+    return currentUser.value!
+  }
+  
+  function setCurrentUser(user: User | null): void {
+    currentUser.value = user
+  }
+  
+  async function login(data: AuthLoginForm): Promise<void> {
+    const response = await authService.login(data.username, data.password)
+    accessToken.value = response.accessToken
+  }
+  
+  function logout(): void {
+    authService.logout()
+    setCurrentUser(null)
+  }
+  
+  return {
+    currentUser,
+	isAuthenticated,
+	getCurrentUser,
+	setCurrentUser,
+	login,
+	logout,
+  }
 })
 ```
+
+> aside negative
+> You will need to provide the `AuthLoginForm` en `User` type for yourself.
 
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
@@ -686,8 +696,8 @@ This is useful when you want to protect a route from being accessed by unauthent
 
 - Create a new file `router.ts` in the `src/router` folder.
 - Implement a router using the `createRouter` function from `vue-router`.
-- Create empty components called `LoginView.vue` and `TodoView.vue` in the `src/views` folder.
-- Add a `login` and `todos` route to the router that lazy loads the `LoginView` and `TodoView` components.
+- Create empty components called `AuthLoginView.vue` and `TodoOverviewView.vue` in the `src/views` folder.
+- Add a `login` and `todos` route to the router that lazy loads the `AuthLoginView` and `TodoOverviewView` components.
 
 ```typescript
 const routes: RouteRecordRaw[] = [
@@ -749,7 +759,7 @@ Now that we have created the store, service and router, we can start with creati
 Views are the "Smart components" in our application. They are allowed to import stores, routers, dumb components, etc.
 
 Our Login view will orchestrate the login flow. It will use the `authStore` to login the user and the `router` to
-navigate to the `TodoView` after a successful login.
+navigate to the `TodoOverviewView` after a successful login.
 
 ### Creating your Login view (smart) component
 
@@ -760,13 +770,14 @@ navigate to the `TodoView` after a successful login.
 
 ### Implementing the login flow
 
-- Import the `useAuthStore` and `useRouter` in your `LoginView`.
+- Import the `useAuthStore` and `useRouter` in your `AuthLoginView`.
 - Create a new `authStore` and `router` instance.
 - Use the `router` to navigate to the `TodoOverviewView.vue` view after successfully logging in.
 
 ```vue
 <script setup lang="ts">
 const authStore = useAuthStore()
+const router = useRouter()
   
 async function handleLogin(data: { username: string; password: string }): Promise<void> {
   await authStore.login(data)
@@ -923,8 +934,8 @@ export type TodoForm = z.infer<typeof formSchema>
 ```
 
 > aside positive
-> We use the `zod` library to create our form schemas. This library is used to validate and transform data.
-> You can read more about it here: [Zod](https://zod.dev/)
+> We use the **zod** library to create our form schemas. This library is used to validate and transform data.
+> You can read more about it here: [Zod.dev](https://zod.dev/)
 
 ### Service
 After creating the model that we want to add a new function to our existing service that will be used to create a new todo.
@@ -1007,9 +1018,41 @@ onSubmitForm(async (formData: TodoCreateForm) => {
 
 <template>
 <form @submit.prevent="onSubmit">
-    <input v-model="title.value" />
+    <AppInput v-bind="title" />
     <button type="submit">Submit</button>
 </form>
+```
+
+> aside negative
+> You will need to create a custom input component called `AppInput` for yourself.
+> This is necessary to make sure that Formango can properly bind the input to the form.
+
+Example of a custom input component:
+```vue
+<script setup lang="ts">
+const props = defineProps<{
+  isDisabled?: boolean
+  placeholder?: string
+}>()
+
+const emit = defineEmits<{
+  blur: []
+}>()
+
+const model = defineModel<string | null>() // New macro to define a model https://vuejs.org/guide/components/v-model.html
+
+</script>
+
+<template>
+  <div>
+    <input
+        v-model="model"
+        :disabled="props.isDisabled"
+        :placeholder="props.placeholder"
+        @blur="() => emit('blur')"
+    />
+  </div>
+</template>
 ```
 
 ### View
@@ -1058,6 +1101,10 @@ export const todoService: TodoService = {
   },
 }
 ```
+
+> aside negative
+> You will need to provide the `TodoUuid` type for yourself. Zod allows you to create a custom type for this using **brands**.
+> More info can be found here: [https://zod.dev/?id=brand](https://zod.dev/?id=brand)
 
 ### Mutation
 Once we have added the `update` and `deleteByUuid` functions to our service, we can start with creating the mutations.
