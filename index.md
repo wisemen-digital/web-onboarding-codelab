@@ -207,7 +207,7 @@ You can find the designs here:
 ### 1. A Vue3 project
 
 We use the latest version of Vue for this project. Vue3 is the latest version and has some new features and
-improvements over Vue2. You can read more about Vue3 here: [Vue3 website]('https://v3.vuejs.org/')
+improvements over Vue2. You can read more about Vue3 here: [Vue3 website](https://vuejs.org/)
 Make sure you use the CLI version to create the project.
 
 
@@ -369,7 +369,7 @@ node_modules folder to git. This file is used to tell git to ignore this folder.
 
 ### Folder structure
 
-For this project we will be using a 'split-by-type' folder structure. This is recommended for small applications.
+For this project we will be using a 'split-by-module' folder structure. Although 'split-by-module' is mainly recommended for medium to large applications, we will still use it here. As you won't be working on small applications for long 😉;
 
 You can read more about it here: [Folder structure](https://thefrontendbible.com/project-structure)
 
@@ -602,6 +602,7 @@ export const authService: AuthService = {
       grant_type: 'password',
       password: password,
       username: username,
+      scope: "read write"
     })
 
     const config = {
@@ -764,7 +765,7 @@ navigate to the `TodoOverviewView` after a successful login.
 ### Creating your Login view (smart) component
 
 - Create a view called `AuthLoginView.vue` in the `src/modules/auth/views` folder.
-- Create a new file called `AuthLoginForm.vue` in the `src/modules/auths/components` folder.
+- Create a new file called `AuthLoginForm.vue` in the `src/modules/auth/components` folder.
 - Add a form that allows the user to enter a `username` and `password`.
 - Add the `AuthLoginForm` component to the `AuthLoginView.vue` view.
 
@@ -824,7 +825,7 @@ interface TodoService {
   getAll: () => Promise<Todo[]>
 }
 
-export const authService: AuthService = {
+export const todoService: TodoService = {
   getAll: async (): Promise<Todo[]> => {
     const response = await httpClient.get('/todos')
     return response.items
@@ -891,7 +892,7 @@ const props = defineProps<{
 ### View
 
 The last step is to combine all of our pieces in a (smart) component that will be used to display the todo's.
-This file should be named and we will put this in our `src/modules/todos/views` folder.
+This file should be named `TodoOverviewView` and we will put this in our `src/modules/todos/views` folder.
 
 This view will combine the query and list component we have created before.
 ```vue
@@ -1094,7 +1095,7 @@ interface TodoService {
 
 export const todoService: TodoService = {
   update: async (uuid: TodoUuid, form: TodoForm): Promise<void> => {
-    await httpClient.put(`/todos/${uuid}`, form)
+    await httpClient.post(`/todos/${uuid}`, form)
   },
   deleteByUuid: async (uuid: TodoUuid): Promise<void> => {
     await httpClient.delete(`/todos/${uuid}`)
