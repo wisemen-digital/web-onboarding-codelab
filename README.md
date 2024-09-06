@@ -3,7 +3,7 @@
 ### 1. Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 2. Run the project locally
@@ -11,7 +11,7 @@ npm install
 If you makes changes, the project will be recompiled. You can see the changes in the browser if you fresh.
 
 ```bash
-npm run serve
+pnpm run docs:serve
 ```
 
-Link: https://wisemen-onboarding-frontend.netlify.app/#0
+Link: https://wisemen-digital.github.io/web-onboarding-codelab/
