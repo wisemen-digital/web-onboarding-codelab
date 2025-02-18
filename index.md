@@ -390,6 +390,7 @@ export class TodoService {
     const response = await viewTodoIndexControllerViewTodos({
       query: new PaginationDtoBuilder(paginationOptions).build(),
     })
+    
     return PaginatedDataTransformerUtil.fromDto(response.data, TodoIndexTransformer.fromDto)
   }
 }
@@ -533,7 +534,7 @@ export class TodoService {
   ...
   static async create(form: TodoCreateForm): Promise<void> {
     await createTodoControllerCreateTodoV1({
-      body: TodoService.toDto(form),
+      body: TodoTransformerCreate.toDto(form),
     })
   }
 }
@@ -579,7 +580,7 @@ const todoCreateMutation = useTodoCreateMutation()
 
 const emit = defineEmits<{
   close: []
-}>()t
+}>()
 
 const form = useForm({
   schema: todoFormSchema,
@@ -588,15 +589,16 @@ const form = useForm({
     description: '',
     deadline: '',
   },
-  onSubmitForm(async (formData) => {
+  onSubmit: async (formData) => {
       try {
-          await todoCreateMutation.mutateAsync({
-            data: formData
-          }) // notice the async keyword here, it's very important
+          // notice the async keyword here, otherwise the try catch won't work properly
+          await todoCreateMutation.execute({
+            body: formData
+          }) 
         } catch (error) {
-        apiErrorToast.show(error)
+          apiErrorToast.show(error)
       }
-  })
+  }
 })
 
 const title = form.form.register('title')
@@ -611,12 +613,8 @@ function onClose(): void {
 </script>
 
 <template>
-    <VcDialog
-        @close="onClose"
-    >
-        <AppDialogContent
-                class="w-dialog-sm"
-        >
+    <VcDialog @close="onClose">
+        <AppDialogContent class="w-dialog-sm">
         <AppForm :form="form"">
             <VcInput v-bind="title" />
             <AppDialogActions>
@@ -661,9 +659,9 @@ function onCreate(): void {
             :todos="todos" 
             :is-loading="isLoading"
     />
-    <button @click="onCreate">
+    <VcButton @click="onCreate">
       Create todo
-    </button>
+    </VcButton>
 </div>
 </template>
 ```
@@ -722,33 +720,39 @@ const apiErrorToast = useApiErrorToast()
 const form = useForm({
   schema: todoFormSchema,
   initialValues: {
-    title: props.todo?.title || '',
-    description: props.todo?.description || '',
-    deadline: props.todo?.deadline || '',
+    title: props.todo?.title ?? '',
+    description: props.todo?.description ?? '',
+    deadline: props.todo?.deadline ?? '',
   },
+  onSubmit: async (formData: TodoForm) => {
+    try {
+      if (props.todo) {
+        await updateMutation.execute({
+          params: {
+            uuid: props.todo.uuid,
+          },
+          body: formData
+        })
+      } else {
+        await createMutation.execute({
+          body: formData
+        })
+      }
+    } catch (error) {
+      apiErrorToast.show(error)
+    }
+  }
 })
 
 const title = form.form.register('title')
 ...
 
-function onSubmit(): void {
-  form.form.submit()
-}
-
-form.onSubmitForm(async (formData: TodoForm) => {
-  try {
-    if (props.todo) {
-      await updateMutation.execute(props.todo.uuid, formData)
-    } else {
-      await createMutation.execute(formData)
-    }
-  } catch (error) {
-    apiErrorToast.show(error)
-  }
-})
-
 function onDelete(uuid: TodoUuid): void {
-  deleteMutation.execute(uuid)
+  deleteMutation.execute({
+    params: {
+      uuid,
+    },
+  })
 }
 
 </script>
@@ -756,14 +760,16 @@ function onDelete(uuid: TodoUuid): void {
 <template>
 <div>
   ...
-    <form @submit.prevent="onSubmit">
+    <AppForm :form="form">
         <input v-model="title.value" />
         ...
-        <button type="submit">Submit</button>
-    </form>
-    <button @click="onDelete(props.uuid)">
+        <FormSubmitButton :form="form">
+          Submit
+        </FormSubmitButton>
+    </AppForm>
+    <VcButton @click="onDelete(props.uuid)">
       Delete
-    </button>
+    </VcButton>
   ...
 </div>
 </template>
