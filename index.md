@@ -153,23 +153,7 @@ We expect you to make pull request of your work so your buddy can review your co
 track of your progress.
 
 > aside positive
-> We switched to GitHub for our new projects. 
 > You can find our GitHub organization here: [Wisemen GitHub](https://github.com/wisemen-digital)
-
-### Linear access
-
-For this onboarding you will be working with Linear to track your progress. You can find the Linear board here:
-[Linear Todo]()
-
-Linear is used to track the progress of your project and manage the tasks that need to be done.
-All the requirements for the to-do app are in the Linear. You will be creating tasks in the Linear to keep track of your progress.
-
-The Linear contains all the requirements for creating the to-do app.
-
-*ToDo: Add link to Linear*
-
-> A little tip: You can copy you're branch name from the linear ticket by using the command .
->`cmd + shift + .` on the ticket and then paste it in your terminal.
 
 ## Project explanation
 
@@ -180,11 +164,6 @@ The backend is already created, and you can find the documentation here:
 
 Username: `appwise`  
 Password: `password`
-
-//TODO remove this?
-For ease of use we are going to mock the backend in this project. so you don't have to worry about it.
-You can still use the backend documentation to see how the backend works.
-This won't change anything in the way you work with the project. (Ask your buddy to setup op Mock Service Worker with you!)
 
 ### Requirements
 
@@ -200,8 +179,11 @@ This won't change anything in the way you work with the project. (Ask your buddy
 The designs for the to-do app can be found in Figma. Login with your Wisemen google account to view the designs.
 You can find the designs here:
 
+
 [Figma designs](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?type=design&node-id=467-4945&mode=design&t=c2mb4igTcdZQaH6X-4)
 
+> aside positive
+> Make sure that you use the "Web" designs for this onboarding.
 
 ## Project Template
 
@@ -209,6 +191,12 @@ Before you start with the project, you need to understand what the project templ
 
 Our [frontend bible](https://wisemen-digital.github.io/frontend-bible/project-template) 
 explains everything you need to know about the project template.
+
+### Clone the template
+
+Go to the [project template](https://github.com/wisemen-digital/vue-project-template) and click on the `Use this template` button to create a new repository.
+
+Use your private GitHub account to create the repository and give it the name `onboarding-todo`
 
 ## PROJECT: Battle plan 
 
@@ -228,8 +216,8 @@ Luckily for us, the template already contains a fully functional login page.
 9. If you have time left, you can add some extra features to the application. For example, you can add a search bar to search for todos, or add a filter to filter the todos by status.
 
 > aside negative
-> The snippets provided in the codelab are examples to help you get started and move you in the right direction. 
-> It's your own responsibility to make sure that the code is correct and that it works as expected.
+> This following steps are a guide to push you in the right direction. 
+> The project template contains enough examples to help you create the application.   
 
 ## PROJECT: Http layer & API client
 
@@ -244,21 +232,21 @@ That's why we use services to make our backend calls. This way we can let the se
 readable and maintainable.
 
 ### Authentication
-The template will do almost everything authentication related for you. You only need to change the environment variables to match the backend.
+The template handles authentication for you. You only need to change the environment variables to match the backend.
 
 ### Environment variables
 To make sure that we don't hardcode the base url of the backend in our service, we will use environment variables.
 
 - Create a new file called `.env` in the root of your project.
 - Add a new variable called `API_BASE_URL` and set it to the base url of the backend.
-- Do the same for the `AUTH_BASE_URL`, `AUTH_CLIENT_ID` and `AUTH_ORGANIZATION_ID` variables. These will be used with Zitatel to authenticate the user.
+- Do the same for the `AUTH_BASE_URL`, `AUTH_CLIENT_ID` and `AUTH_ORGANIZATION_ID` variables. 
+- These will be used with Zitadel to authenticate the user.
 
-[//]: # (TODO: zet de juiste ENV's voor de todo app)
 ```env
-API_BASE_URL=https://vue-node.project-template.development.appwi.se
+API_BASE_URL=https://onboarding-todo.internal.appwi.se
 
 AUTH_BASE_URL=https://zitadel.internal.appwi.se
-AUTH_CLIENT_ID=294498462244882333
+AUTH_CLIENT_ID=305078631263175721
 AUTH_ORGANIZATION_ID=284257737964064935
 
 ENVIRONMENT=development
@@ -272,7 +260,9 @@ This client is created by our hey-api package and uses the Fetch API internally.
 A different method used in newer projects is to use OpenApi to generate the client. 
 This is a package that will generate the client for you based on the backend documentation. 
 It also generates the types of the dto's which saves you a lot of time and prevents mistakes.
-This is configured in the `openapi.config.ts` file. [bible link voor openapi]()
+This is configured in the `openapi.config.ts` file.
+
+Make sure the `input` is set to `https://onboarding-todo.internal.appwi.se/api/docs-json`
 
 If everything is configured correctly, you can generate the SDK, types and zod by running the following command:
 ```bash
@@ -280,18 +270,13 @@ pnpm openapi-ts
 ```
 
 After logging in, the tokens will be stored in the local storage. And the user data will be stored in the Auth Store inside the `auth.store.ts` file.
-If you want to know how this works, you can look at the bible [bible link die nog niet bestaat]()
-
-> aside positive
-> You can find the `client_id` and `client_secret` in the backend documentation.
-
-💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
 ## PROJECT: Router
 
 The router is the core of Vue.js applications. It is used to navigate between different views.
 It is also used to handle authentication and permissions for specific routes using "guards".
-This is useful when you want to protect a route from being accessed by unauthenticated users. This is handled inside the `authMiddleware` and explained [here (bible tekst over middleware)]()
+This is useful when you want to protect a route from being accessed by unauthenticated users. 
+This is handled inside the `authMiddleware`
 
 ### Creating new routes
 
@@ -308,9 +293,6 @@ try and create a new route for your todos overview.
 - Try to make a route for the `TodoOverviewView.vue` view. Don't forget to also add the route to the `router.ts` file.
 
 Yes, this is a lot of folders and files. But this is how we structure our projects and if you work on larger projects you will see that this is very handy. 
-
-💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
-
 
 ## PROJECT: Displaying todo's
 
@@ -329,45 +311,11 @@ And when the BE changes the data structure, we only have to change the DTO model
 We are also going to need a transformer to map the data that we receive from the backend into the format that we want to use in our frontend. 
 this file will be called `todo.transformer.ts` and will be places in the `src/models/todos` folder.
 
-`todoIndex.model.ts` will contain an interface that will represent a single todo with the following properties:
-```typescript
-export interface TodoIndex {
-  uuid: string
-  title: string
-  description: string
-  deadline: string
-  isCompleted: boolean
-}
-```
+`todoIndex.model.ts` will contain an interface that will represent a single todo.
 
-`todoDto.model.ts` will contain an interface that will represent a single todo with the following properties (this is the data that we receive from the backend). You can make your own interface,
-but because we use the OpenApi plugin, the DTO's are already generated for you. so you only have to this:
-```typescript
-import type { ViewTodoIndexView } from '@/client'
-
-export type TodoIndexDto = ViewTodoIndexView
-```
-
-The naming of the generated DTO's is based on the endpoint and the method. So in this case the endpoint is `todo` and the method is `index`. but you can always look in the client file to find the type you are looking for.
-
-`todo.transformer.ts` will contain a Class that will transform the data that we receive from the backend into the format that we want to use in our frontend. 
-In this example both types are exactly the same, but in a real project this will not always be the case. 
-```typescript
-import { TodoIndexDto } from './todoDto.model'
-import { TodoIndex } from './todo.model'
-
-export class TodoIndexTransformer {
-  static fromDto(data: TodoIndexDto): TodoIndex {
-    return {
-      uuid: data.uuid,
-      title: data.title,
-      description: data.description,
-      deadline: data.deadline,
-      isCompleted: data.is_completed,
-    }
-  }
-}
-```
+`todoDto.model.ts` will contain an interface that will represent a single todo with the following properties (this is the data that we receive from the backend). 
+You can make your own interface,
+but because we use the OpenApi plugin, the DTO's are already generated for you. so you only have to re-assign the type from the generated DTO to your own type.
 
 ### Service
 After creating the model that we want to use in our frontend, 
@@ -382,21 +330,7 @@ Important to note: the index call for getting the todo's is a paginated call. Th
 
 Luckily for you, the template provides some composables and helper functions to make this super easy!
 
-```typescript
-export class TodoService {
-  static async getAll(
-      paginationOptions: PaginationOptions<never>,
-  ): Promise<PaginatedData<TodoIndex>> {
-    const response = await viewTodoIndexControllerViewTodos({
-      query: new PaginationDtoBuilder(paginationOptions).build(),
-    })
-    
-    return PaginatedDataTransformerUtil.fromDto(response.data, TodoIndexTransformer.fromDto)
-  }
-}
-```
-
-If you don't understand what all these helper functions and types are for, 
+If you don't understand what all the helper functions and types are for, 
 you can always look into the implementation or ask your buddy for a quick explanation.
 
 ### Query
@@ -405,27 +339,10 @@ This query will be used to call the `getAll` function from our service and fetch
 
 The reason we use queries is so that we can easily fetch, cache and update asynchronous data in our components without the hassle of setting up a dedicated global store.
 
-We use Tanstack Query for this. Read more about it [here](https://tanstack.com/query/latest/docs/framework/vue/overview)
-
-```typescript
-
-export function useTodoIndexQuery(
-        paginationOptions: ComputedRef<PaginationOptions<never>>,
-): UseQueryReturnType<PaginatedData<TodoIndex>> {
-  return useQuery<PaginatedData<TodoIndex>>({
-    queryFn: () => {
-      return TodoService.getAll(paginationOptions.value)
-    },
-    queryKey: {
-      todoIndex: {
-        paginationOptions,
-      },
-    },
-  })
-}
-```
-
 You also have to add the query key to the `src/types/queryKey.type.ts` file. There should be examples in there to help you.
+
+> aside positive
+> We use Tanstack Query for this. Read more about it [here](https://tanstack.com/query/latest/docs/framework/vue/overview)
 
 ### List component
 Once we have created the query, we can start with creating a list component that will be used to display the todo's.
@@ -435,56 +352,12 @@ Once we have created the query, we can start with creating a list component that
 - Add a message when there are no todo's.
 - Add a loading state when the todo's are being fetched from the backend.
 
-```vue
-<script setup lang="ts">
-const props = defineProps<{
-  todos: Todo[]
-  isLoading: boolean
-}>()
-</script>
-
-<template>
-<div>
-  <div v-if="props.todos.length > 0">
-    <ul>
-      <li v-for="todo in props.todos" :key="todo.uuid">
-        {{ todo.title }}
-      </li>
-    </ul>
-  </div>
-  <p v-else> No todo's found </p>
-  <p v-if="props.isLoading">Loading...</p>
-</div>
-</template>
-```
-
 ### View
 
 The last step is to combine all of our pieces in a (smart) component that will be used to display the todo's.
 This file should be named `TodoOverviewView` and we will put this in our `src/modules/todo/features/overview/views` folder.
 
 This view will combine the query and list component we have created before.
-```vue
-<script setup lang="ts">
-import { useTodoIndexQuery } from '@/modules/todos/services/todoIndex.query'
-import { TodoIndex } from '@/models/todos/todoIndex.model'
-import {computed} from 'vue'
-
-const useTodoIndexQuery = useTodoIndexQuery()
-const todos = computed<TodoIndex[]>(() => useTodoIndexQuery.data?.data ?? [])
-const isLoading = computed<boolean>(() => useTodoIndexQuery.isLoading.value)
-  
-</script>
-
-<template>
-<div>
-    <TodoList 
-        :todos="todos" 
-        :is-loading="isLoading"
-    />
-</div>
-</template>
-```
 
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
@@ -501,23 +374,9 @@ for creating a new todo.
 We are going to start by creating a file called `todoCreateForm.model.ts` in the `src/models/todos/create` folder.
 
 This file will contain a form schema that will be used to create a new todo
-```typescript
-export const todoCreateFormSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  deadline: z.string(),
-})
 
-export type TodoCreateForm = z.infer<typeof formSchema>
-```
 We again use a DTO model for this to separate the data that we send to the backend from the data that we use in the frontend. We can use the generated DTO for this.
-so in the same folder you can create a `todoCreateDto.model.ts` file with the following content:
-```typescript
-import type { CreateTodoCommand } from '@/client'
-
-export type TodoCreateDto = CreateTodoCommand
-```
-
+so in the same folder you can create a `todoCreateDto.model.ts` file.
 
 > aside positive
 > We use the **zod** library to create our form schemas. This library is used to validate data.
@@ -527,37 +386,10 @@ Also make a transformer for this model. Make a second class called `TodoCreateTr
 ### Service
 After creating the model that we want to add a new function to our existing service that will be used to create a new todo.
 
-```typescript
-
-
-export class TodoService {
-  ...
-  static async create(form: TodoCreateForm): Promise<void> {
-    await createTodoControllerCreateTodoV1({
-      body: TodoTransformerCreate.toDto(form),
-    })
-  }
-}
-```
-
 ### Mutation
 Next up we are going to create a mutation called `useTodoCreateMutation`.
 
 This mutation will be used to call the `create` function from our service and create a new todo in the backend.
-
-```typescript
-export function useTodoCreateMutation(): UseMutationReturnType<TodoCreateForm, void, void> {
-  return useMutation<TodoCreateForm, void, void>({
-    queryFn: async ({ body }) => {
-      return await TodoService.create(body)
-    },
-    queryKeysToInvalidate: {
-      todoIndex: {}, //This will automatically invalidate the todoIndex query when the mutation is done
-    },
-  })
-}
-
-```
 
 > aside positive
 > If you're not sure how to use `useMutation`, you can take a look at the [Vue Query documentation](https://tanstack.com/query/v4/docs/vue/guides/mutations).
@@ -572,99 +404,13 @@ Once we have created the mutation, we can start with creating a dialog component
 > aside positive
 > For more info about form validation you can check out our [Formango](https://github.com/wisemen-digital/vue-formango) library.
 
-```vue
-<script setup lang="ts">
-import { useForm } from 'formango' 
-const apiErrorToast = useApiErrorToast()
-const todoCreateMutation = useTodoCreateMutation()
-
-const emit = defineEmits<{
-  close: []
-}>()
-
-const form = useForm({
-  schema: todoFormSchema,
-  initialState: {
-    title: '',
-    description: '',
-    deadline: '',
-  },
-  onSubmit: async (formData) => {
-      try {
-          // notice the async keyword here, otherwise the try catch won't work properly
-          await todoCreateMutation.execute({
-            body: formData
-          }) 
-        } catch (error) {
-          apiErrorToast.show(error)
-      }
-  }
-})
-
-const title = form.form.register('title')
-
-function onSubmit(): void {
-  form.form.submit()
-}
-
-function onClose(): void {
-  emit('close')
-}
-</script>
-
-<template>
-    <VcDialog @close="onClose">
-        <AppDialogContent class="w-dialog-sm">
-        <AppForm :form="form"">
-            <VcInput v-bind="title" />
-            <AppDialogActions>
-                <AppDialogActionCancel
-                        @click="onClose"
-                        :label="..." />
-                <FormSubmitButton
-                        :form="form"
-                        :label="..."
-                />
-            </AppDialogActions>
-          </AppForm>
-        </AppDialogContent>
-  </VcDialog>
-```
-
 > aside positive
 > You are going to use the components from the vue-core library. You can find the documentation [here](https://vue-core.wisemen.digital/).
 > Try and understand how the components work and. If anything is unclear, you can always ask your buddy for help.
 
-
 ### View
 To finish up, we are going to update our `TodoOverviewView` by adding a button that will open the `TodoDialog` when clicked.
 use the useDialog composable to make it all work!
-
-```vue
-<script setup lang="ts">
-...
-const todoCreateDialog = useDialog({
-  component: () => import('@/modules/todos/components/TodoCreateDialog.vue'),
-}) 
-
-function onCreate(): void {
-  todoCreateDialog.open()
-}
-...
-</script>
-
-<template>
-<div>
-    <TodoList 
-            :todos="todos" 
-            :is-loading="isLoading"
-    />
-    <VcButton @click="onCreate">
-      Create todo
-    </VcButton>
-</div>
-</template>
-```
 
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
 
@@ -677,19 +423,6 @@ check if a todo uuid is passed to the dialog.
 
 ### Service
 Now it's time to add a new function to our existing service that will be used to update a todo. try it yourself!
-
-```typescript
-export class TodoService {
-    ...
-  static async update(uuid: TodoUuid, form: TodoForm): Promise<void>{
-    ...
-  }
-  
-  static async deleteByUuid(uuid: TodoUuid): Promise<void> {
-    ...
-  }
-}
-```
 
 > aside negative
 > You will need to provide the `TodoUuid` type for yourself. Zod allows you to create a custom type for this using **brands**.
@@ -705,79 +438,7 @@ Now it's time to extend the functionality of the `TodoDialog` component to allow
 - Add a `update` function to the `TodoDialog` component that will call the `useTodoUpdateMutation` mutation.
 - Add a `delete` function to the `TodoDialog` component that will call the `useTodoDeleteMutation` mutation.
 
-```vue
-<script setup lang="ts">
-
-const props = defineProps<{
-  todo: Todo | null
-}>()
-
-const updateMutation = useTodoUpdateMutation()
-const deleteMutation = useTodoDeleteMutation()
-
-const apiErrorToast = useApiErrorToast()
-
-const form = useForm({
-  schema: todoFormSchema,
-  initialValues: {
-    title: props.todo?.title ?? '',
-    description: props.todo?.description ?? '',
-    deadline: props.todo?.deadline ?? '',
-  },
-  onSubmit: async (formData: TodoForm) => {
-    try {
-      if (props.todo) {
-        await updateMutation.execute({
-          params: {
-            uuid: props.todo.uuid,
-          },
-          body: formData
-        })
-      } else {
-        await createMutation.execute({
-          body: formData
-        })
-      }
-    } catch (error) {
-      apiErrorToast.show(error)
-    }
-  }
-})
-
-const title = form.form.register('title')
-...
-
-function onDelete(uuid: TodoUuid): void {
-  deleteMutation.execute({
-    params: {
-      uuid,
-    },
-  })
-}
-
-</script>
-
-<template>
-<div>
-  ...
-    <AppForm :form="form">
-        <input v-model="title.value" />
-        ...
-        <FormSubmitButton :form="form">
-          Submit
-        </FormSubmitButton>
-    </AppForm>
-    <VcButton @click="onDelete(props.uuid)">
-      Delete
-    </VcButton>
-  ...
-</div>
-</template>
-```
-
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
-
-## PROJECT: Writing your first test
 
 ## Finishing up
 
