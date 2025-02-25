@@ -451,6 +451,7 @@ The last step is to write tests to provide coverage on your code. For writing th
 - Create a `todoIndex.builder.ts` builder in the `src/models/todos/index` folder.
 - Generate a new directory named `todos` in `src/tests`.
 - Create a new file `todoOverview.spec.ts` in the `src/tests/todos` directory.
+- Create `todo.mock.ts` in the `src/mocks/handlers` directory.
 - Write a test that will check if the todo's are displayed in the list. (make use of testIds in `testId.constant.ts)
 
 
