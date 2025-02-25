@@ -155,6 +155,8 @@ track of your progress.
 > aside positive
 > You can find our GitHub organization here: [Wisemen GitHub](https://github.com/wisemen-digital)
 
+#
+
 ## Project explanation
 
 You will be creating a simple to-do app. The app can be used to create, edit and delete to-do's.
@@ -439,6 +441,34 @@ Now it's time to extend the functionality of the `TodoDialog` component to allow
 - Add a `delete` function to the `TodoDialog` component that will call the `useTodoDeleteMutation` mutation.
 
 💡Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
+## PROJECT: Writing tests's
+**Duration: 0**
+
+The last step is to write tests to provide coverage on your code. For writing these tests we make use of PlayWright and Vitest. We at Wisemen strive to make our code as reliable as possible and testing helps us to notice bugs and errors faster—much needed especially when projects are scaling. There are different tests, but we recommend you read the [Frontend bible testing strategy](https://wisemen-digital.github.io/frontend-bible/testing) to get up to speed with our testing strategy.
+
+### Steps testing
+- Create a `todoIndex.builder.ts` builder in the `src/models/todos/index` folder.
+- Generate a new directory named `todos` in `src/tests`.
+- Create a new file `todoOverview.spec.ts` in the `src/tests/todos` directory.
+- Write a test that will check if the todo's are displayed in the list. (make use of testIds in `testId.constant.ts)
+
+
+If everything is configured correctly, you can start up the testing suite by running the following command:
+```bash
+npx playwright --ui
+```
+
+if the test runs smoothly then you can follow the same steps for the detail, create and update tests.
+
+other ways of starting the test are available in the `package.json` file.
+
+
+### finishing up
+
+
+💡 Don't forget to make a pull request of your work so your buddy can review your code and keep track of your progress. Keeping your PR's small and frequent is a good practice.
+
 
 ## Finishing up
 
