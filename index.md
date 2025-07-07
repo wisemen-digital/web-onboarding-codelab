@@ -121,6 +121,17 @@ This is a good time to take a quick look at our template. You can find it here: 
 Take a quick look around to get familiar with the structure of the project. Ask your buddy if you have any questions. 
 But don't worry, we will go through it in this onboarding.
 
+### Vue-core component library
+
+Our template uses the **vue-core** component library, which contains the most common components that we use across our projects. You'll be using these components throughout this onboarding when building the todo app.
+
+Take some time to explore the vue-core documentation to familiarize yourself with the available components:
+
+[Vue-core Documentation](https://wisemen-digital.github.io/vue-core/packages/components-next/getting-started/installation.html)
+
+> aside positive
+> Understanding the vue-core components before you start implementation will help you work more efficiently. Don't worry about memorizing everything - you can always reference the documentation as you build.
+
 ### Figma
 
 Our designers work with **Figma**.
@@ -405,7 +416,7 @@ Once we have created the mutation, we can start with creating a dialog component
 > For more info about form validation you can check out our [Formango](https://github.com/wisemen-digital/vue-formango) library.
 
 > aside positive
-> You are going to use the components from the vue-core library. You can find the documentation [here](https://vue-core.wisemen.digital/).
+> You are going to use the components from the vue-core library. You can find the documentation [here](https://wisemen-digital.github.io/vue-core/packages/components-next/getting-started/installation.html).
 > Try and understand how the components work and. If anything is unclear, you can always ask your buddy for help.
 
 ### View
