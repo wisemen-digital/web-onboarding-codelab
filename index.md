@@ -309,7 +309,7 @@ this is a good practice because the data that we receive from the backend is not
 And when the BE changes the data structure, we only have to change the DTO model.
 
 We are also going to need a transformer to map the data that we receive from the backend into the format that we want to use in our frontend. 
-this file will be called `todo.transformer.ts` and will be places in the `src/models/todos` folder.
+this file will be called `todo.transformer.ts` and will be places in the `src/models/todo` folder.
 
 `todoIndex.model.ts` will contain an interface that will represent a single todo.
 
@@ -371,7 +371,7 @@ Dialogs are allowed to be smart components. The dialog will contain a form that 
 for creating a new todo.
 
 ### Form model
-We are going to start by creating a file called `todoCreateForm.model.ts` in the `src/models/todos/create` folder.
+We are going to start by creating a file called `todoCreateForm.model.ts` in the `src/models/todo/create` folder.
 
 This file will contain a form schema that will be used to create a new todo
 
