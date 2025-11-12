@@ -189,7 +189,7 @@ You can find the designs here:
 
 Before you start with the project, you need to understand what the project template contains and how it is structured.
 
-Our [frontend bible](https://wisemen-digital.github.io/frontend-bible/project-template) 
+Our [vue-playbook](https://wisemen-digital.github.io/vue-playbook/project-template) 
 explains everything you need to know about the project template.
 
 ### Clone the template
